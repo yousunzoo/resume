@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# work artifacts (design refs, analysis docs, omc)
+.design-reference.md
+.design-reference-2.md
+.devlog-keywords.md
+.moyeoba-analysis.md
+.resume-analysis.md
+.resume-content-reference.md
+.omc/
