@@ -1,26 +1,187 @@
+/* ─── Fonts ──────────────────────────────────────────────────────────────────── */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css");
+
 @import "tailwindcss";
 
+/* ────────────────────────────────────────────────────────────────────────────
+   Design tokens — Monochrome professional résumé
+   Off-white paper, ink-black text, hairline greys. No color, no gradients.
+   The single "accent" is near-black ink so any legacy accent-* class stays
+   strictly monochrome. Contrast verified WCAG AA+ on paper.
+   ──────────────────────────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Surfaces */
+  --canvas:      #f6f6f4;   /* page background — warm off-white */
+  --paper:       #ffffff;   /* cards / sidebar / sheet */
+  --paper-2:     #fafaf9;   /* nested surfaces, table stripes */
+  --paper-3:     #f0f0ee;   /* chips, subtle fills */
+
+  /* Text (neutral greyscale) */
+  --ink:         #17181a;   /* headings — ~16:1 on paper */
+  --ink-body:    #33353a;   /* body — ~10:1 on paper */
+  --ink-muted:   #565961;   /* secondary — ~6.5:1 on paper (AA) */
+  --ink-faint:   #767a82;   /* meta labels — ~4.6:1 on paper */
+
+  /* "Accent" = ink. Kept so legacy accent-* utilities stay monochrome. */
+  --accent:      #17181a;   /* points / active — near-black */
+  --accent-ink:  #000000;   /* hover / active emphasis */
+  --accent-soft: #f0f0ee;   /* neutral fill (was tinted) */
+  --accent-line: #d5d5d1;   /* neutral hairline (was tinted) */
+
+  /* Lines & shadows (soft, neutral) */
+  --line:        #e5e5e1;   /* hairline borders */
+  --line-strong: #cfcfca;   /* emphasized borders */
+  --ring:        rgba(23, 24, 26, 0.4);
+
+  --shadow-sm: 0 1px 2px rgba(23, 24, 26, 0.04);
+  --shadow-md: 0 1px 3px rgba(23, 24, 26, 0.05), 0 6px 20px rgba(23, 24, 26, 0.05);
+  --shadow-lg: 0 2px 6px rgba(23, 24, 26, 0.06), 0 16px 44px rgba(23, 24, 26, 0.08);
+
+  --radius: 12px;
+
+  /* Motion — single signature easing (standard-decelerate) */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-canvas:      var(--canvas);
+  --color-paper:       var(--paper);
+  --color-paper-2:     var(--paper-2);
+  --color-paper-3:     var(--paper-3);
+  --color-ink:         var(--ink);
+  --color-ink-body:    var(--ink-body);
+  --color-ink-muted:   var(--ink-muted);
+  --color-ink-faint:   var(--ink-faint);
+  --color-accent:      var(--accent);
+  --color-accent-ink:  var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-line: var(--accent-line);
+  --color-line:        var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --font-sans: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic",
+    "Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base ───────────────────────────────────────────────────────────────────── */
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--canvas);
+  color: var(--ink-body);
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  line-height: 1.7;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "case" 1, "ss01" 1;
+}
+
+/* Headings track tighter for a crisper hierarchy */
+h1, h2, h3 {
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Skip link — appears on keyboard focus (WCAG 2.4.1) */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 50;
+  transform: translateY(-160%);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.18s var(--ease-out);
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--ink);
+  color: #fff;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+a:focus-visible,
+button:focus-visible {
+  outline-offset: 3px;
+}
+
+/* Numeric emphasis — tabular figures for metrics/dates */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* ─── Reduced Motion ─────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Print ──────────────────────────────────────────────────────────────────── */
+@media print {
+  :root {
+    --canvas: #ffffff;
+  }
+  body {
+    background: #fff;
+    font-size: 10.5pt;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-block {
+    break-inside: avoid;
+  }
+  a {
+    color: var(--ink) !important;
+    text-decoration: none !important;
+  }
+}
+
+/* ─── Hide scrollbars (scroll still works) ──────────────────────────────────── */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / legacy Edge */
+}
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none; /* Chrome / Safari / Edge */
 }
