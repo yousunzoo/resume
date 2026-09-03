@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { profile } from "@/data/resume";
+import { profile } from "@/entities/profile";
 
 // 공유(OG) 카드 이미지 — 프로필 사진이 스크래퍼에 잡히지 않도록 명시적으로 지정.
 // ImageResponse 기본 폰트는 한글(CJK)을 렌더하지 못하므로 영문 텍스트만 사용한다.

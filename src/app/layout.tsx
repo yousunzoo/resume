@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { pretendard } from "@/shared/fonts/pretendard";
-import { profile } from "@/data/resume";
+import { profile } from "@/entities/profile";
 
 export const metadata: Metadata = {
   title: `${profile.name} · ${profile.title}`,

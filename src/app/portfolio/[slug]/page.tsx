@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { projects, getProjectBySlug } from "@/data/resume";
-import { SubPageShell } from "@/components/SubPageShell";
-import { ProjectDetail } from "@/components/ProjectDetail";
+import { projects, getProjectBySlug } from "@/entities/project";
+import { ProjectView } from "@/views/project";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -27,11 +26,5 @@ export default async function ProjectPage({
   const project = getProjectBySlug(slug);
   if (!project) notFound();
 
-  return (
-    <SubPageShell backLabel="포트폴리오 목록" backHref="/portfolio">
-      <div className="mx-auto max-w-[760px]">
-        <ProjectDetail project={project} />
-      </div>
-    </SubPageShell>
-  );
+  return <ProjectView project={project} />;
 }
