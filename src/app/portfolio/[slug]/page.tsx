@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { projects, getProjectBySlug } from "@/data/resume";
-import { SubPageShell } from "@/components/SubPageShell";
-import { ProjectDetail } from "@/components/ProjectDetail";
+import { projects, getProjectBySlug } from "@/entities/project";
+import { ProjectView } from "@/views/project";
+import { JsonLd } from "@/shared/ui";
+import { buildCreativeWorkJsonLd } from "@/shared/lib/seo";
+import { site } from "@/shared/config/site";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -14,9 +16,21 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) return { title: "프로젝트를 찾을 수 없습니다" };
+
+  const title = `${project.title} · 유선주`;
+  const url = `/portfolio/${project.slug}`;
+
   return {
-    title: `${project.title} · 유선주`,
+    title,
     description: project.headline,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description: project.headline,
+      url,
+    },
   };
 }
 
@@ -28,10 +42,16 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   return (
-    <SubPageShell backLabel="포트폴리오 목록" backHref="/portfolio">
-      <div className="mx-auto max-w-[760px]">
-        <ProjectDetail project={project} />
-      </div>
-    </SubPageShell>
+    <>
+      <JsonLd
+        data={buildCreativeWorkJsonLd({
+          name: project.title,
+          description: project.headline,
+          url: `${site.url}/portfolio/${project.slug}`,
+          keywords: project.tech,
+        })}
+      />
+      <ProjectView project={project} />
+    </>
   );
 }

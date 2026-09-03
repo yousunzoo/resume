@@ -1,0 +1,15 @@
+export { Text, Heading } from "@/shared/ui/text";
+export type { TextVariant, TextWeight } from "@/shared/ui/text";
+export { Eyebrow } from "@/shared/ui/eyebrow";
+export { Card } from "@/shared/ui/card";
+export { Chip } from "@/shared/ui/chip";
+export { Badge } from "@/shared/ui/badge";
+export { Divider } from "@/shared/ui/divider";
+export { SectionHeading } from "@/shared/ui/section-heading";
+export { NumberedList } from "@/shared/ui/numbered-list";
+export type { NumberedListItem } from "@/shared/ui/numbered-list";
+export { TechTag } from "@/shared/ui/tech-tag";
+export { Reveal } from "@/shared/ui/reveal";
+export { SkipLink } from "@/shared/ui/skip-link";
+export { JsonLd } from "@/shared/ui/json-ld";
+export * from "@/shared/ui/icons";
