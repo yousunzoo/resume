@@ -48,3 +48,6 @@ next-env.d.ts
 .resume-analysis.md
 .resume-content-reference.md
 .omc/
+
+# Local résumé PDF build artifacts
+.resume-build/
