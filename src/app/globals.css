@@ -169,6 +169,13 @@ button:focus-visible {
   .print-block {
     break-inside: avoid;
   }
+  /* PDF/인쇄에서는 카드 Description 등 말줄임(line-clamp)을 해제해
+     모든 문장이 잘리지 않고 완전한 형태로 노출되도록 한다. */
+  [class*="line-clamp"] {
+    -webkit-line-clamp: unset !important;
+    display: block !important;
+    overflow: visible !important;
+  }
   a {
     color: var(--ink) !important;
     text-decoration: none !important;

@@ -40,7 +40,7 @@ export function ProjectCard({
             {num}
           </span>
           <span className="mt-2 block text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-faint">
-            {meta.label}
+            {project.cardCategory ?? meta.label}
           </span>
           {featured && (
             <span className="mt-3 hidden w-fit border border-ink px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-[0.18em] text-ink sm:inline-block">
@@ -67,7 +67,7 @@ export function ProjectCard({
         )}
 
         <p className="tnum mb-2 text-[11px] font-medium text-ink-faint">
-          {project.category} · {project.period}
+          {project.angle ?? project.category} · {project.period}
         </p>
 
         <h3

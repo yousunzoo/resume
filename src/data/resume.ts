@@ -90,6 +90,8 @@ export interface Project {
   headline: string; // 한 줄 요약
   keyResult: string; // 핵심 성과
   tags: string[]; // 카드용 키워드 칩
+  angle?: string; // 카드용 성격 라벨 (예: "사용자 경험·운영 개선") — 대표 카드 구분용
+  cardCategory?: string; // 카드 상단 카테고리 라벨 오버라이드 (예: "금융", "SI")
 
   // 기존 요약 필드 (카드/리스트에서 사용)
   summary: string;
@@ -223,9 +225,9 @@ export const experiences: Experience[] = [
           "렌더링 전략과 리소스 로딩 구조를 개선해 실제 운영 서비스의 웹 성능과 검색 최적화 지표 향상",
       },
       {
-        title: "Start-kit 구축으로 신규 프로젝트 개발 기반 표준화",
+        title: "Start-kit 구축으로 신규 프로젝트 초기 개발 비용 절감",
         description:
-          "반복되는 초기 환경 설정을 Boilerplate로 구성해 신규 프로젝트 구축 기간을 단축하고, 상태 관리·API·공통 UI·디렉터리 구조 등 팀의 개발 구조를 표준화",
+          "반복되는 초기 환경 설정을 Boilerplate로 구성하고 상태 관리·API·공통 UI·디렉터리 구조를 표준화해 프로젝트별 초기 구축 작업과 코드 구조 편차를 줄임",
       },
     ],
   },
@@ -237,12 +239,14 @@ export const projects: Project[] = [
     slug: "bankmall-mortgage-flow",
     title: "뱅크몰 — 주택담보·전세대출 신청 플로우 개선",
     category: "금융 서비스",
+    cardCategory: "금융",
+    angle: "사용자 경험·운영 개선",
     featured: true,
     period: "2024.02 – 2024.03",
     role: "신청 플로우 구조 재설계 · 핵심 로직/UI 개발",
     tech: ["React", "Next.js", "TypeScript", "Zustand"],
     headline:
-      "복잡한 대출 신청 상태를 multi-step 구조로 다시 짜 사용자 이탈과 운영 오류를 함께 줄인 개선",
+      "복잡하게 얽힌 입력·진행 상태를 분리한 Multi-step 구조로 담보대출 신청 플로우를 재설계",
     keyResult: "사용자 이탈률 약 80% 감소 · 운영 오류 접수율 약 90% 감소",
     tags: ["Multi-step Flow", "상태 책임 분리", "금융", "visualViewport", "IME"],
     summary:
@@ -306,12 +310,14 @@ export const projects: Project[] = [
     slug: "bankmall-credit-flow",
     title: "뱅크몰 — 신용·개인회생자대출 신청 플로우 개선",
     category: "금융 서비스",
+    cardCategory: "금융",
+    angle: "상태 모델링",
     featured: true,
     period: "2025.05 – 2025.06",
     role: "신청 라우팅·단계 진입 검증 설계 · 핵심 로직/UI 개발",
     tech: ["React", "Next.js", "TypeScript", "Zustand"],
     headline:
-      "URL과 신청 상태를 동기화한 Multi-step 구조로 재설계해, 새로고침·뒤로가기·비정상 단계 진입에서도 신청 상태가 유지되도록 개선",
+      "URL과 신청 상태를 동기화해 새로고침·뒤로가기에도 신청 단계가 유지되는 Multi-step 구조 설계",
     keyResult:
       "챗봇형 UI를 단계형 신청 경험으로 전환 · 비정상 단계 진입 방어 · 정책 변경 영향 범위 축소",
     tags: ["URL as State", "Step Guard", "Routing", "Discriminated Union"],
@@ -372,12 +378,14 @@ export const projects: Project[] = [
     slug: "bankmall-strategy",
     title: "뱅크몰 — 금융사별 상담 신청 로직·상품 목록 개선",
     category: "금융 서비스",
+    cardCategory: "금융",
+    angle: "정책·아키텍처",
     featured: true,
     period: "2024.12 – 2025.02",
     role: "정책 로직 구조 설계 · 공통 컴포넌트화 · 마이그레이션",
     tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     headline:
-      "금융사 정책과 공통 UI를 변경 이유에 따라 분리해, 특정 금융사 정책 변경이 다른 로직에 번지지 않고 UI 수정 범위를 최소화하도록 개선",
+      "금융사별 정책과 공통 UI를 분리해 정책 변경이 다른 신청 로직으로 전파되지 않는 구조 설계",
     keyResult: "동일 UI 수정 파일 5개 → 1개 · 금융사별 정책 변경 영향 격리",
     tags: ["Strategy Pattern", "변경 영향 격리", "Migration"],
     summary:
@@ -646,7 +654,7 @@ export const projects: Project[] = [
     slug: "clickb-site",
     title: "클릭비 — IT 외주 에이전시 공개 사이트·컴포넌트 모노레포",
     category: "플랫폼",
-    featured: true,
+    featured: false,
     period: "2025.06 – 진행",
     role: "pnpm 모노레포·디자인시스템 설계 · 공개 사이트 Frontend 단독 개발",
     tech: [
@@ -724,6 +732,8 @@ export const projects: Project[] = [
     slug: "clickb-admin",
     title: "클릭비 — 제안서·포트폴리오 운영 어드민(제안서 자동 구조화·발행)",
     category: "백오피스·자동화",
+    cardCategory: "Ops · Automation",
+    angle: "제안서 자동화·운영",
     featured: true,
     period: "2026.03 – 진행",
     role: "어드민 Frontend 단독 개발 · 제안서 데이터 × 렌더러 설계",
@@ -738,7 +748,7 @@ export const projects: Project[] = [
       "Zod",
     ],
     headline:
-      "제안서를 데이터와 렌더러로 분리해, 글만 입력하면 건별 조판 없이 고유 URL로 발행되는 제안서 운영 어드민",
+      "제안서를 데이터와 렌더러로 분리해 입력만으로 고유 URL을 발행하는 운영 시스템 구축",
     keyResult:
       "원문을 12개 섹션 데이터로 구조화해 고정 렌더러로 발행 · 조판 과정 제거로 작성 시간 단축·품질 상향 평준화 · AI 없이도 동작하는 폴백",
     tags: ["TanStack Router", "서버/UI/폼 상태 분리", "데이터 × 렌더러", "FSD", "제안서 자동화"],
@@ -814,7 +824,9 @@ export const projects: Project[] = [
     slug: "moyeoba",
     title: "모여바 — USJ 티켓·e-SIM 여행 바우처 셀프 관리 웹",
     category: "플랫폼",
-    featured: false,
+    cardCategory: "SI",
+    angle: "End-to-End",
+    featured: true,
     period: "2026.02 – 2026.08",
     role: "Frontend 개발 · FSD 아키텍처 · API 계층 설계",
     tech: [
@@ -829,7 +841,7 @@ export const projects: Project[] = [
       "Tailwind CSS",
     ],
     headline:
-      "스마트스토어 여행상품 구매자가 인증코드만으로 바우처를 수령·예약·변경하는 모바일 셀프서비스 웹",
+      "발권·예약·방문일 변경을 수기로 감당하던 여행 상품을 무회원 셀프서비스 구조로 옮겨 요구사항부터 출시·운영까지 수행",
     keyResult:
       "회원가입 없는 인증코드 로그인부터 다단계 예약·방문일 변경까지 셀프서비스로 구현해 수기 CS 처리 부담 축소",
     tags: ["Next.js", "FSD 아키텍처", "여행 커머스"],
@@ -908,6 +920,10 @@ export const techStack: TechStackGroup[] = [
     ],
   },
   {
+    category: "State & Data",
+    items: ["Zustand", "TanStack Query", "TanStack Router"],
+  },
+  {
     category: "Build & Infra",
     items: ["pnpm", "Vite", "Ladle", "changesets", "Docker", "pino", "Loki"],
   },
@@ -952,8 +968,20 @@ export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
 }
 
-// 이력서 홈에 노출할 대표 프로젝트 (Featured)
-export const featuredProjects = projects.filter((p) => p.featured);
+// 이력서 홈에 노출할 대표 프로젝트 (Featured) — 표시 순서 고정 (01~05)
+// 금융 3건(사용자 경험·상태 모델링·정책) → SI End-to-End(모여바) → OPS·Automation(클릭비 어드민)
+const FEATURED_ORDER: string[] = [
+  "bankmall-mortgage-flow",
+  "bankmall-credit-flow",
+  "bankmall-strategy",
+  "moyeoba",
+  "clickb-admin",
+];
+export const featuredProjects = projects
+  .filter((p) => p.featured)
+  .sort(
+    (a, b) => FEATURED_ORDER.indexOf(a.slug) - FEATURED_ORDER.indexOf(b.slug),
+  );
 
 // 카테고리 목록 (포트폴리오 필터용)
 export const projectCategories: ProjectCategory[] = [
