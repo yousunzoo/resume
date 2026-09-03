@@ -61,6 +61,7 @@ export const projects: Project[] = [
       "입력 상태와 Flow 상태를 분리한 multi-step 구조 재설계",
       "단계 결정 로직을 컴포넌트 밖으로 분리",
       "KB시세·공시지가·행정안전부 외부 데이터 조회·변환 모듈화",
+      "Zustand 커스텀 스토어 인터페이스(createStore)로 상태·액션 접근을 일관화하고 미들웨어·리셋을 표준화",
       "모바일 신청 경험 안정화 — iOS Safari visualViewport resize 리스너로 키패드 노출 시 레이아웃 대응, 한글 IME isComposing 처리로 keydown 중복 입력 방지",
     ],
     interviewPoints: [
@@ -75,6 +76,7 @@ export const projects: Project[] = [
       { title: "가격 입력 input 만들기", href: DEVLOG_URL },
       { title: "스크롤이 있을 때 하단을 블러 처리하는 컴포넌트 만들기", href: DEVLOG_URL },
       { title: "커스텀 Select 컴포넌트 만들기", href: DEVLOG_URL },
+      { title: "zustand를 좀 더 편리하게 사용할 수 있는 인터페이스 만들기", href: DEVLOG_URL },
     ],
   },
 
@@ -143,6 +145,7 @@ export const projects: Project[] = [
     relatedPosts: [
       { title: "pathname 기반 Multi-Step flow 설계", href: DEVLOG_URL },
       { title: "타입 확장하기, 좁히기", href: DEVLOG_URL },
+      { title: "zustand를 좀 더 편리하게 사용할 수 있는 인터페이스 만들기", href: DEVLOG_URL },
     ],
   },
 
@@ -307,6 +310,7 @@ export const projects: Project[] = [
       "React Native·Expo 기반 iOS/Android 앱 개발",
       "WebView·deep linking·secure storage 등 모바일 연동",
       "PASS 본인인증 연동 구조",
+      "httpOnly Cookie 인증 상태 동기화 · 웹↔네이티브 메시지 브리지(햅틱·공유)",
       "API Fetcher 및 데이터 변환 유틸",
       "콘텐츠 유형별 렌더링 및 최적화",
     ],
@@ -338,17 +342,23 @@ export const projects: Project[] = [
     highlights: [
       "WebView 기반 PASS 인증 브리지 설계",
       "Next.js API Route 서버 검증 후 postMessage 전달",
+      "httpOnly Cookie 인증 상태를 토큰 노출 없이 동기화 — 서버 검증 결과만 postMessage로 전달해 인증 Source of Truth를 서버에 유지",
+      "웹↔네이티브 메시지 프로토콜(eventType::payload) 표준화 · HapticManager로 iOS/Android 햅틱 차이 흡수",
       "커스텀 Fetcher 인터페이스로 API 호출부 추상화",
       "DTO ↔ Form 변환 레이어 도입",
     ],
     interviewPoints: [
       "WebView 메시지를 믿으면 안 되는 이유와 서버 검증 위치",
       "React Native에서 웹 인증을 연결할 때 쿠키가 걸리는 이유",
+      "httpOnly Cookie를 Native로 가져오지 않고 인증 결과만 동기화한 이유",
+      "웹과 네이티브의 책임 경계를 어떻게 나눴는가 — 햅틱 실행 주체와 플랫폼 차이 흡수",
       "Fetcher 추상화의 적절한 경계",
       "API DTO와 Form Model을 분리하는 이유",
     ],
     relatedPosts: [
       { title: "Next.js fetch를 활용한 API fetcher 인터페이스 설계", href: DEVLOG_URL },
+      { title: "React Native WebView에서 httpOnly Cookie 인증을 연결한 방법", href: DEVLOG_URL },
+      { title: "React Native WebView에서 햅틱 피드백 연결하기", href: DEVLOG_URL },
     ],
   },
 
@@ -461,7 +471,7 @@ export const projects: Project[] = [
     decisions: [
       {
         heading: "재사용 코드를 워크스페이스 패키지로 분리했습니다",
-        body: "ui(105개 컴포넌트·Ladle 스토리), hook(페이지네이션·미디어쿼리 등), api-client(ky 인터셉터), observability(pino→Loki), types·utils·config·scripts로 나눴습니다. 앱은 조합만 하고 공통 규칙은 패키지가 소유하도록 경계를 그었고, changesets로 패키지 버전을 관리하며 create-app·create-package 스캐폴딩 스크립트로 신규 앱·패키지 생성을 자동화했습니다.",
+        body: "ui(105개 컴포넌트·Ladle 스토리), hook(페이지네이션·미디어쿼리 등), api-client(ky 인터셉터), observability(pino→Loki), types·utils·config·scripts로 나눴습니다. 앱은 조합만 하고 공통 규칙은 패키지가 소유하도록 경계를 그었고, changesets로 패키지 버전을 관리하며 스캐폴딩 CLI로 신규 앱·패키지 생성을 자동화했습니다. config 패키지에는 FSD 레이어 규칙을 강제하는 커스텀 ESLint 플러그인(layer-imports·public-api·slice-segments)을 넣어, 아키텍처 경계 위반을 코드 리뷰가 아니라 lint 단계에서 차단했습니다. 스캐폴딩 CLI는 파일을 바로 쓰지 않고 plan→dry-run→apply→self-check→manifest 흐름으로 두어, 생성 전 계획 확인·덮어쓰기 방지·생성 이력 추적을 보장했습니다.",
       },
       {
         heading: "ISR 태그 캐싱과 BFF로 백엔드 부하를 흡수했습니다",
@@ -483,6 +493,7 @@ export const projects: Project[] = [
       "ISR 태그 캐싱 + BFF로 포트폴리오를 백엔드 부하 없이 재검증",
       "홈 오비탈 3D를 포트폴리오 데이터 기반으로 자동 갱신",
       "changesets·스캐폴딩으로 앱·패키지 추가 비용 축소",
+      "FSD 아키텍처 규칙을 ESLint로 강제해 경계 위반을 자동 차단·리뷰 부담 축소",
     ],
     highlights: [
       "pnpm 워크스페이스 모노레포에 8개 공유 패키지 설계 (@click-b/ui·hook·api-client·observability·types·utils·config·scripts)",
@@ -490,13 +501,22 @@ export const projects: Project[] = [
       "react-three-fiber 오비탈을 DB 포트폴리오 해시태그 빈도 기반으로 렌더",
       "ISR revalidate 300s + fetch next.tags Data Cache + /api/portfolios BFF 라우트",
       "pino→Loki 서버 로그 + /api/log 브라우저 로그 수집 관측성 패키지",
-      "changesets 버전 관리 · create-app/create-package 스캐폴딩 자동화",
+      "FSD 레이어 규칙을 커스텀 ESLint 플러그인 3종(layer-imports·public-api·slice-segments)으로 강제",
+      "스캐폴딩 CLI를 plan→dry-run→apply→self-check→manifest 파이프라인으로 설계 — 덮어쓰기 방지·생성 이력 추적·doctor 재검증",
+      "changesets 버전 관리 · 스캐폴딩 CLI로 앱·패키지 추가 자동화",
     ],
     interviewPoints: [
       "마케팅 사이트에 모노레포·디자인시스템까지 도입한 판단 기준과 손익",
       "ISR revalidate와 fetch 태그 캐싱을 함께 쓴 이유, 온디맨드 갱신과의 트레이드오프",
       "3D를 데이터 시각화로 묶어 얻은 것과 성능 관리 방법",
       "공유 패키지 경계를 어디서 끊었고 앱과 패키지 책임을 어떻게 나눴는가",
+      "FSD 규칙을 문서가 아니라 ESLint로 강제한 이유와 커스텀 rule 설계",
+      "스캐폴딩 CLI에서 파일을 바로 쓰지 않고 plan·dry-run·manifest를 둔 이유",
+    ],
+    relatedPosts: [
+      { title: "FSD 규칙을 ESLint로 강제해보기", href: DEVLOG_URL },
+      { title: "SI 프로젝트용 Start-Kit CLI 만들기", href: DEVLOG_URL },
+      { title: "Feature Sliced Design 그게 뭔데...", href: DEVLOG_URL },
     ],
   },
 
@@ -677,6 +697,82 @@ export const projects: Project[] = [
       { title: "Next.js fetch를 활용한 API fetcher 인터페이스 설계", href: DEVLOG_URL },
       { title: "Suspense와 ErrorBoundary", href: DEVLOG_URL },
       { title: "API 중복 요청, 버튼 더블 클릭 방지하기", href: DEVLOG_URL },
+    ],
+  },
+
+  // ── 10. SI Harness — AI 협업 SI 워크플로우 자동화 환경 ────────────────────
+  {
+    slug: "si-harness",
+    title: "SI Harness — AI 협업 SI 워크플로우 자동화 환경",
+    category: "백오피스·자동화",
+    cardCategory: "AI · Tooling",
+    angle: "AI 워크플로우 자동화",
+    featured: false,
+    period: "2026.05 – 진행",
+    role: "개인 프로젝트 · Claude Code harness 설계·구현",
+    tech: ["Claude Code", "Skill / Agent", "Hooks", "TypeScript", "JSON"],
+    headline:
+      "SI 프로젝트의 제안~인수 전 과정을 AI가 같은 순서로 따라오도록 command·skill·agent·status 파일로 고정한 Claude Code harness",
+    keyResult:
+      "반복되는 SI 작업 기준을 프롬프트가 아니라 저장소에 고정 · 세션이 끊겨도 phase·gate를 status.json으로 복원",
+    tags: ["AI Harness", "워크플로우 자동화", "Claude Code", "상태 파일"],
+    summary:
+      "SI 프로젝트를 AI와 진행할 때 매번 작업 순서·제약을 다시 설명하던 문제를, 제안·착수·설계·구현·배포·인수 단계를 command와 skill로 나누고 역할별 agent에 위임하며 진행 상태를 status.json에 남기는 harness로 풀었습니다.",
+    overview:
+      "화면을 만드는 프로젝트가 아니라, 화면을 만드는 과정을 AI가 따라올 수 있게 만든 작업 환경입니다. Claude Code용 command·skill·agent·hook·status 파일을 묶어, SI 프로젝트에서 반복되는 흐름을 저장소에 고정했습니다.",
+    scope: [
+      "제안~인수 6단계 파이프라인(/si-proposal → kickoff → design → dev → deploy → handoff)",
+      "횡단 흐름(/si-cr 변경 요청, /si-hotfix 긴급 수정, /si-status 상태 조회)",
+      "역할별 agent(architect·entity-dev·ui-dev·test-eng·reviewer·devops) 위임 구조",
+      "Global Layer / Project Layer 분리 및 프로젝트 템플릿(.claude·.si)",
+      "세션 시작·컨텍스트 압축 전 상태 보존 hook",
+    ],
+    problem:
+      "SI 프로젝트를 AI와 진행하면 '지금은 요구사항 단계다', 'API 확정 전이다', '화면보다 엔티티 먼저다' 같은 작업 기준을 매번 프롬프트에 다시 써야 했고, 대화가 길어져 컨텍스트가 압축되면 합의했던 순서가 대화 안에서만 흩어져 사라졌습니다.",
+    decision:
+      "AI에게 '알아서'를 맡기는 대신 반복 흐름을 command·skill로 고정하고, 구현은 역할별 agent에 위임했으며, 진행 상태를 대화가 아니라 status.json 파일에 남겼습니다.",
+    decisions: [
+      {
+        heading: "작업 순서를 command·skill로 고정했습니다",
+        body: "제안·착수·설계·구현·배포·인수를 각각 command 또는 skill로 나누고, SI 특성상 상시 발생하는 변경 요청·긴급 수정·상태 조회를 횡단 흐름으로 따로 뒀습니다. 예외를 '수정해줘' 한마디로 뭉뚱그리지 않도록 흐름을 명시했습니다.",
+      },
+      {
+        heading: "구현은 역할별 agent에 위임했습니다",
+        body: "'주문 목록 만들어줘'처럼 타입·API·UI·검증을 한 번에 섞지 않고, 데이터 레이어(entity-dev)와 화면 레이어(ui-dev)를 나누고 검증(test-eng·reviewer)을 분리해, 문제가 났을 때 원인을 레이어 단위로 추적할 수 있게 했습니다.",
+      },
+      {
+        heading: "진행 상태를 status.json에 남겼습니다",
+        body: "현재 phase·phase 이력·변경 요청·gate 통과 여부를 파일로 관리하고, 세션 시작·컨텍스트 압축 전 hook으로 현재 상태를 출력해, 세션이 바뀌거나 컨텍스트가 끊겨도 다시 이어갈 기준을 만들었습니다.",
+      },
+      {
+        heading: "설계 단계에서 API를 상상하지 않게 했습니다",
+        body: "Swagger·백엔드 문서가 있으면 그것을 기준으로 정리하고, 없으면 '없음'으로 표시해 백엔드 요청 사항으로 남겼습니다. AI가 그럴듯한 경로를 지어내 실제 스펙과 어긋나는 코드를 만드는 것을 막았습니다.",
+      },
+    ],
+    result:
+      "SI 작업 기준을 프롬프트가 아니라 저장소에 남겨, 매번 다시 설명하지 않아도 AI가 같은 흐름으로 움직이는 작업 환경을 만들었습니다. 진행 중인 프로젝트로, 일부 단계 구성과 status.json 스키마는 계속 정리하고 있습니다.",
+    results: [
+      "제안~인수 6단계 + 횡단 3흐름을 command·skill로 고정",
+      "구현을 데이터/화면/검증 역할별 agent로 분리해 원인 추적성 확보",
+      "status.json + hook으로 세션·컨텍스트가 끊겨도 진행 상태 복원",
+      "Global/Project 레이어 분리로 새 SI 프로젝트 작업 환경을 빠르게 심기",
+    ],
+    highlights: [
+      "SI 라이프사이클을 command·skill 파이프라인으로 구조화(제안·착수·설계·구현·배포·인수)",
+      "변경 요청·긴급 수정·상태 조회를 횡단 흐름으로 분리(/si-cr·/si-hotfix·/si-status)",
+      "역할별 agent 위임 구조로 구현·검증 책임 분리",
+      "status.json 단일 상태 원천 + 세션/압축 hook으로 상태 보존",
+      "설계 단계에서 API를 상상하지 않고 확인·미확인을 명시하는 원칙",
+    ],
+    interviewPoints: [
+      "AI에게 '알아서'를 맡기지 않고 작업 순서를 저장소에 고정한 이유",
+      "구현을 한 번에 시키지 않고 역할별 agent로 나눈 판단",
+      "진행 상태를 대화가 아니라 파일(status.json)에 남긴 이유",
+      "설계 단계에서 API를 상상하지 못하게 막은 방법",
+    ],
+    relatedPosts: [
+      { title: "SI 전용 AI Harness 만들기", href: DEVLOG_URL },
+      { title: "SI 프로젝트용 Start-Kit CLI 만들기", href: DEVLOG_URL },
     ],
   },
 ];
