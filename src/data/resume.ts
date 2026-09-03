@@ -20,14 +20,19 @@ export interface Profile {
   image?: string;
 }
 
+export interface TitledItem {
+  title: string;
+  description: string;
+}
+
 export interface Experience {
   company: string;
   role: string;
   period: string;
   team: string;
   description: string;
-  responsibilities: string[];
-  keyImpact: string[];
+  responsibilities: TitledItem[];
+  keyImpact: TitledItem[];
 }
 
 export interface TechStackGroup {
@@ -128,12 +133,19 @@ export const summary: string[] = [
 
 // 자기소개 (About) — 이력서 상단 소개 문단
 export const aboutMe: string[] = [
-  "프론트엔드 개발을 화면을 구현하는 일로만 보지 않습니다. 비즈니스 요구사항을 실제로 쓸 수 있는 서비스로 만드는 과정이라고 생각합니다.",
-  "React·Next.js·TypeScript를 중심으로 금융 플랫폼, 커머스, 중개·매칭, 예약, CRM, 관리자 시스템까지 폭넓게 개발해 왔습니다. 누적 사용자 800만 명 이상의 금융 플랫폼을 직접 개발·운영했고, 신규 구축은 물론 실제 트래픽이 흐르는 서비스를 오래 운영하며 성능 개선, 기술 부채 관리, 장애 대응, 데이터 기반 고도화까지 겪었습니다.",
-  "여러 SI 프로젝트에서 아이디어 단계의 요구사항을 구체화하고, 사용자와 운영자의 업무 흐름을 뜯어본 뒤 실제 시스템 구조로 설계하는 일에 깊이 관여했습니다. 특히 핵심 비즈니스 Flow와 상태 구조, 관리자 운영 방식, 외부 API 연동, 권한 정책을 개발 초기부터 함께 검토하는 데 강점이 있습니다.",
-  "기능 하나를 만들 때도 지금 요구사항을 채우는 데서 멈추지 않습니다. 실제 운영에서 어떻게 쓰일지, 불필요한 수작업이나 CS를 만들지는 않는지, 서비스가 커졌을 때 확장할 수 있는 구조인지를 함께 따집니다.",
-  "기획자·디자이너·백엔드 개발자와 의견을 적극적으로 맞추고, 기술 문제를 개발팀 안의 언어에 가두지 않도록 서비스와 운영 관점으로 풀어 정리합니다.",
-  "빠르게 만드는 것과 오래 쓸 수 있게 만드는 것 사이에서 프로젝트 상황에 맞는 현실적인 판단을 내립니다. 개발 결과가 실제 비즈니스 성과와 운영 효율로 이어지는 서비스를 지향합니다.",
+  "프론트엔드를 화면을 만드는 일이 아니라, 자주 바뀌는 요구사항을 변경에 강한 구조로 번역하는 일로 봅니다. 좋은 설계는 '무엇이 바뀔 수 있는가'를 먼저 정하고, 변하는 축과 고정된 축을 분리하는 데서 시작한다고 생각합니다.",
+  "복잡도가 높은 서비스일수록 화면보다 상태·분기·변경 이유가 문제의 핵심입니다. UI 결함을 상태 책임과 변경 영향 범위의 문제로 환원해, 어떤 입력과 정책이 지금 상태를 만들었는지 추적할 수 있는 구조를 우선합니다.",
+  "누적 사용자 800만 명의 대출 비교 플랫폼(뱅크몰)을 장기간 개발·운영하며 성능 개선, 레거시 마이그레이션, 장애 대응을 겪었고, 단일 화면을 넘어 모노레포·디자인시스템·관측성으로 팀 전체의 변경 비용을 낮추는 일까지 다뤘습니다.",
+  "자사 금융 서비스를 장기간 개발·운영하는 동시에, 다양한 SI 프로젝트에서 요구사항 구체화부터 설계·개발·출시·운영까지 End-to-End로 참여했습니다. 정리되지 않은 비즈니스 요구사항을 정책·Flow·API·화면 구조로 구체화하고, 실제 운영 가능한 서비스로 전환하는 과정까지 프론트엔드의 역할로 봅니다.",
+  "기획·디자인·백엔드와 개발 초기부터 핵심 Flow와 권한·API·운영 방식을 함께 정의하고, 속도와 지속 가능성 사이의 트레이드오프를 프로젝트 맥락에 맞게 판단합니다. 코드의 완성 기준을 배포가 아니라 운영에서 의도대로 동작하는 시점으로 둡니다.",
+];
+
+// 전문 영역 (Focus) — 도구가 아닌 도메인·역량 키워드. 사이드바 상단에 노출
+export const focusAreas: string[] = [
+  "프론트엔드 아키텍처",
+  "운영형 플랫폼",
+  "성능·관측성",
+  "디자인시스템",
 ];
 
 // 핵심 지표 하이라이트 (홈 상단 강조용)
@@ -151,24 +163,70 @@ export const experiences: Experience[] = [
     period: "2023.08 – 재직 중",
     team: "개발팀",
     description:
-      "대출 비교·상담 중개 플랫폼과 관리자 시스템, 대출상담사 매칭 서비스를 개발·운영하고 있습니다. 자사 서비스 개발과 함께 외부 고객사를 위한 SI(수탁 개발) 프로젝트도 수행하며, 요구사항 분석부터 화면 설계·구현·운영까지 담당합니다. 사용자 화면뿐 아니라 운영자의 업무 흐름과 정책 변경까지 함께 고려하며 프론트엔드 구조를 개선하고 신규 기능을 만들었습니다.",
+      "대출 비교·상담 중개 플랫폼과 관리자 시스템을 개발·운영하고 있습니다. 복잡한 금융 정책과 운영 프로세스를 프론트엔드 구조로 설계하고, 레거시 개선과 공통 개발 기반 구축을 주도해 왔습니다. 동시에 다양한 외부 SI 프로젝트에서 요구사항 구체화부터 설계·개발·출시·운영까지 End-to-End로 수행하며, 비즈니스 요구사항을 실제 운영 가능한 서비스로 전환하는 역할을 맡고 있습니다.",
     responsibilities: [
-      "주택담보대출·전세대출·신용대출·개인회생자대출 비교 신청 플로우 개발 및 고도화",
-      "금융상품 상담 신청 및 상품 목록 구조 개선",
-      "뱅크몰 Admin 유지보수 및 운영 기능 개발",
-      "대출상담사 온·오프라인 매칭 플랫폼 개발 — 프론트엔드 기여도 약 70%",
-      "React Native·Expo 기반 모바일 서비스 개발",
-      "외부 고객사 SI 프로젝트 수행 — 요구사항 분석·화면 설계·구현·운영(제안서 자동화·매장 마케팅 등)",
-      "레거시 마이그레이션, 성능 최적화, 공통 개발 환경 및 팀 개발 기준 개선",
+      {
+        title: "금융 서비스 핵심 Flow 설계",
+        description:
+          "대출상품별 정책·상태·분기가 복합적으로 결합된 비교·신청 프로세스 설계 및 고도화",
+      },
+      {
+        title: "변경에 강한 프론트엔드 아키텍처 구축",
+        description:
+          "금융사별 정책 격리, 상태 책임 분리, 공통 UI·API·Store 구조 표준화",
+      },
+      {
+        title: "사용자·상담사·운영자를 연결하는 플랫폼 구축",
+        description:
+          "사용자 신청부터 상담사 매칭, 관리자 운영까지 역할별 업무 Flow가 연결되는 서비스 구조 개발",
+      },
+      {
+        title: "레거시 현대화 및 개발 기반 개선",
+        description:
+          "React·Next.js 마이그레이션, TypeScript 전환, 디자인 시스템·공통 패키지·관측성 환경 구축",
+      },
+      {
+        title: "SI 프로젝트 End-to-End 기술 수행",
+        description:
+          "고객 요구사항을 정책·Flow·화면·API 구조로 구체화하고 설계부터 개발·출시·운영까지 수행",
+      },
     ],
     keyImpact: [
-      "주택담보대출·전세대출 신청 플로우를 구조적으로 다시 짜 사용자 이탈률 약 80% 감소",
-      "예외 처리와 상태 흐름을 정리해 운영 오류 접수율 약 90% 감소 — 선언형 에러 처리(Suspense·ErrorBoundary), Error 서브클래싱 기반 전역 에러 핸들러, API 중복요청 방지(Interceptor·AbortController)를 계층적으로 적용해 예외 흐름을 구조화",
-      "금융사별 신청 로직을 Strategy Pattern으로 분리해 정책 변경의 영향 범위와 사이드 이펙트를 좁힘",
-      "공통 레이아웃·리스트 구조를 하나로 합쳐 동일 UI 변경 시 수정 파일 5개 → 1개로 축소",
-      "React 17 → 18, Next.js 10 → 13 마이그레이션 및 TypeScript 전환 60% 이상 수행",
-      "SEO·렌더링 최적화로 Lighthouse Performance 51 → 82, SEO 91 → 100 개선",
-      "Zustand 공통 Store, API Fetcher 인터페이스, 자동화 스크립트, Slack Webhook 알림을 구축해 팀 개발·운영 프로세스 개선",
+      {
+        title: "대출 신청 이탈률 약 80% 감소",
+        description:
+          "복잡하게 결합된 입력·진행 상태를 분리하고 Multi-step 신청 Flow를 재설계해 주택담보·전세대출 신청 과정의 사용자 이탈 개선",
+      },
+      {
+        title: "운영 오류 접수율 약 90% 감소",
+        description:
+          "Suspense·ErrorBoundary 기반 전역 예외 처리와 Interceptor·AbortController 기반 API 요청 제어를 적용해 사용자 오류 경험과 운영 대응 비용 감소",
+      },
+      {
+        title: "금융사별 정책 변경 영향 범위 최소화",
+        description:
+          "금융사마다 달라지는 신청 로직을 Strategy Pattern으로 분리해 특정 금융사의 정책 변경이 공통 신청 Flow에 전파되지 않는 구조로 개선",
+      },
+      {
+        title: "공통 UI 변경 범위 5개 → 1개 파일로 축소",
+        description:
+          "서비스별로 중복 구현된 레이아웃·리스트 구조를 공통 인터페이스와 컴포넌트로 통합해 반복 수정과 변경 비용 감소",
+      },
+      {
+        title: "서비스 중단 없이 프론트엔드 레거시 현대화",
+        description:
+          "React 17 → 18, Next.js 10 → 13 마이그레이션과 기존 코드베이스 60% 이상의 TypeScript 전환을 점진적으로 수행",
+      },
+      {
+        title: "Lighthouse Performance 51 → 82 · SEO 91 → 100",
+        description:
+          "렌더링 전략과 리소스 로딩 구조를 개선해 실제 운영 서비스의 웹 성능과 검색 최적화 지표 향상",
+      },
+      {
+        title: "Start-kit 구축으로 신규 프로젝트 개발 기반 표준화",
+        description:
+          "반복되는 초기 환경 설정을 Boilerplate로 구성해 신규 프로젝트 구축 기간을 단축하고, 상태 관리·API·공통 UI·디렉터리 구조 등 팀의 개발 구조를 표준화",
+      },
     ],
   },
 ];
@@ -253,7 +311,7 @@ export const projects: Project[] = [
     role: "신청 라우팅·단계 진입 검증 설계 · 핵심 로직/UI 개발",
     tech: ["React", "Next.js", "TypeScript", "Zustand"],
     headline:
-      "URL을 신청 상태 모델의 일부로 삼아 브라우저 동작과 신청 단계를 일치시킨 multi-step flow 설계",
+      "URL과 신청 상태를 동기화한 Multi-step 구조로 재설계해, 새로고침·뒤로가기·비정상 단계 진입에서도 신청 상태가 유지되도록 개선",
     keyResult:
       "챗봇형 UI를 단계형 신청 경험으로 전환 · 비정상 단계 진입 방어 · 정책 변경 영향 범위 축소",
     tags: ["URL as State", "Step Guard", "Routing", "Discriminated Union"],
@@ -319,7 +377,7 @@ export const projects: Project[] = [
     role: "정책 로직 구조 설계 · 공통 컴포넌트화 · 마이그레이션",
     tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     headline:
-      "금융사 정책과 공통 UI의 변경 이유를 갈라 Strategy Pattern과 컴포넌트 구조를 각각 적용",
+      "금융사 정책과 공통 UI를 변경 이유에 따라 분리해, 특정 금융사 정책 변경이 다른 로직에 번지지 않고 UI 수정 범위를 최소화하도록 개선",
     keyResult: "동일 UI 수정 파일 5개 → 1개 · 금융사별 정책 변경 영향 격리",
     tags: ["Strategy Pattern", "변경 영향 격리", "Migration"],
     summary:
@@ -601,7 +659,7 @@ export const projects: Project[] = [
       "pnpm Workspace",
     ],
     headline:
-      "8개 공유 패키지 pnpm 모노레포 위에 3D·ISR·관측성을 얹은 데이터 기반 에이전시 공개 사이트",
+      "재사용 코드를 8개 공유 패키지로 분리하고, 수시로 바뀌는 포트폴리오를 백엔드 부하 없이 갱신하도록 만든 에이전시 공개 사이트",
     keyResult:
       "디자인시스템·훅·API·관측성을 재사용 패키지로 분리해 앱 확장 비용을 낮추고, ISR 태그 캐싱으로 백엔드 부하를 흡수",
     tags: ["pnpm 모노레포", "디자인시스템", "react-three-fiber", "ISR·BFF", "관측성"],
@@ -680,7 +738,7 @@ export const projects: Project[] = [
       "Zod",
     ],
     headline:
-      "타입세이프 라우팅과 서버/UI/폼 상태 3분할 위에서 제안서를 섹션 데이터로 구조화해 고유 URL로 발행하는 어드민",
+      "제안서를 데이터와 렌더러로 분리해, 글만 입력하면 건별 조판 없이 고유 URL로 발행되는 제안서 운영 어드민",
     keyResult:
       "원문을 12개 섹션 데이터로 구조화해 고정 렌더러로 발행 · 조판 과정 제거로 작성 시간 단축·품질 상향 평준화 · AI 없이도 동작하는 폴백",
     tags: ["TanStack Router", "서버/UI/폼 상태 분리", "데이터 × 렌더러", "FSD", "제안서 자동화"],
@@ -843,36 +901,15 @@ export const techStack: TechStackGroup[] = [
     category: "Frontend",
     items: [
       "TypeScript",
-      "JavaScript",
       "React",
       "Next.js",
       "React Native",
-      "Expo",
       "Tailwind CSS",
-      "Three.js (react-three-fiber)",
     ],
   },
   {
-    category: "State & Data",
-    items: [
-      "TanStack Query",
-      "TanStack Router",
-      "Zustand",
-      "Jotai",
-      "React Hook Form",
-      "Zod",
-    ],
-  },
-  {
-    category: "Architecture & Infra",
-    items: [
-      "pnpm 모노레포",
-      "Vite",
-      "Ladle",
-      "Docker",
-      "pino · Loki 관측성",
-      "changesets",
-    ],
+    category: "Build & Infra",
+    items: ["pnpm", "Vite", "Ladle", "changesets", "Docker", "pino", "Loki"],
   },
   {
     category: "Testing",

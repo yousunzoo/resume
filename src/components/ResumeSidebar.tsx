@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { profile, techStack, DEVLOG_URL } from "@/data/resume";
+import { profile, techStack, focusAreas, DEVLOG_URL } from "@/data/resume";
 import {
   MailIcon,
   PhoneIcon,
@@ -82,6 +82,23 @@ export function ResumeSidebar() {
               {profile.tagline}
             </p>
           </div>
+
+          {/* Focus */}
+          <section aria-labelledby="side-focus" className="print-block">
+            <SidebarHeading id="side-focus">Focus</SidebarHeading>
+            <ul className="mt-3.5 flex flex-wrap gap-x-2 gap-y-1.5 text-[13px] font-medium text-ink-body">
+              {focusAreas.map((area, i) => (
+                <li key={area} className="flex items-center gap-2">
+                  {i > 0 && (
+                    <span aria-hidden className="text-ink-faint">
+                      ·
+                    </span>
+                  )}
+                  {area}
+                </li>
+              ))}
+            </ul>
+          </section>
 
           {/* Contact */}
           <section aria-labelledby="side-contact">

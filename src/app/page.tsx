@@ -2,7 +2,6 @@ import Link from "next/link";
 import {
   aboutMe,
   experiences,
-  projects,
   featuredProjects,
   education,
   certifications,
@@ -120,17 +119,23 @@ function ExperienceSection() {
 
                 {/* Responsibilities */}
                 <div className="mt-6">
-                  <h4 className="mb-3 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-faint">
+                  <h4 className="mb-3.5 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-faint">
                     담당 영역
                   </h4>
-                  <ul className="grid gap-x-6 gap-y-2 sm:grid-cols-2">
+                  <ul className="space-y-3.5">
                     {exp.responsibilities.map((r, i) => (
-                      <li
-                        key={i}
-                        className="flex gap-2 text-[13px] leading-snug text-ink-body"
-                      >
-                        <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-ink-faint" />
-                        {r}
+                      <li key={i} className="flex gap-3">
+                        <span className="tnum shrink-0 pt-px text-[12px] font-bold text-ink-faint">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <div>
+                          <p className="text-[13.5px] font-semibold leading-snug text-ink">
+                            {r.title}
+                          </p>
+                          <p className="mt-1 text-[13px] leading-relaxed text-ink-body">
+                            {r.description}
+                          </p>
+                        </div>
                       </li>
                     ))}
                   </ul>
@@ -141,16 +146,20 @@ function ExperienceSection() {
                   <h4 className="mb-3.5 text-[11px] font-bold uppercase tracking-[0.16em] text-ink">
                     Key Impact
                   </h4>
-                  <ul className="space-y-3">
+                  <ul className="space-y-3.5">
                     {exp.keyImpact.map((k, i) => (
-                      <li
-                        key={i}
-                        className="flex gap-3 text-[13.5px] leading-relaxed text-ink-body"
-                      >
-                        <span className="tnum shrink-0 pt-px text-[12px] font-bold text-ink-faint">
+                      <li key={i} className="flex gap-3">
+                        <span className="tnum shrink-0 pt-px text-[12px] font-bold text-ink">
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        <span>{k}</span>
+                        <div>
+                          <p className="text-[13.5px] font-semibold leading-snug text-ink">
+                            {k.title}
+                          </p>
+                          <p className="mt-1 text-[13px] leading-relaxed text-ink-body">
+                            {k.description}
+                          </p>
+                        </div>
                       </li>
                     ))}
                   </ul>
@@ -188,10 +197,7 @@ function ProjectsSection() {
       <div className="grid gap-4 sm:grid-cols-2">
         {featuredProjects.map((p, i) => (
           <Reveal key={p.slug} delay={i * 0.05} className="h-full">
-            <ProjectCard
-              project={p}
-              index={projects.findIndex((x) => x.slug === p.slug) + 1}
-            />
+            <ProjectCard project={p} index={i + 1} />
           </Reveal>
         ))}
       </div>
@@ -243,25 +249,21 @@ function CertificationsSection() {
           id="cert-title"
         />
       </Reveal>
-      <ul className="grid gap-x-8 sm:grid-cols-2">
-        {certifications.map((cert, i) => (
-          <Reveal as="li" key={cert.name} delay={i * 0.04}>
-            <div className="flex items-baseline gap-2 border-b border-line py-3 print-block">
-              <span className="text-[14px] font-medium text-ink">
-                {cert.name}
-              </span>
-              <span
-                aria-hidden
-                className="mb-1 min-w-4 flex-1 border-b border-dotted border-line-strong"
-              />
-              <span className="text-[12px] text-ink-muted">{cert.issuer}</span>
-              <span className="tnum shrink-0 text-[12px] font-medium text-ink-faint">
+      <Reveal>
+        <ul className="flex flex-wrap gap-x-5 gap-y-2 border-t border-line pt-4 print-block">
+          {certifications.map((cert) => (
+            <li
+              key={cert.name}
+              className="flex items-baseline gap-1.5 text-[13px] text-ink-body"
+            >
+              <span className="font-medium text-ink">{cert.name}</span>
+              <span className="tnum text-[11px] text-ink-faint">
                 {cert.year}
               </span>
-            </div>
-          </Reveal>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
     </section>
   );
 }
