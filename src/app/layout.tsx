@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { pretendard } from "@/shared/fonts/pretendard";
 import { profile } from "@/data/resume";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ko" className="antialiased">
+    <html lang="ko" className={`${pretendard.variable} antialiased`}>
       <body>{children}</body>
     </html>
   );
