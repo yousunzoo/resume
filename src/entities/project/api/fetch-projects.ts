@@ -1,6 +1,6 @@
 import "server-only";
 import type { Project } from "../model/types";
-import { notion, dataSourceId, notionEnabled } from "./notion-client";
+import { notion, resolveDataSourceId, notionEnabled } from "./notion-client";
 import { mapPropsToProject } from "./map";
 import { fallbackProjects } from "../model/fallback-projects";
 
@@ -9,7 +9,7 @@ export async function fetchProjects(): Promise<Project[]> {
   if (!notionEnabled()) return fallbackProjects;
   try {
     const res = await notion().dataSources.query({
-      data_source_id: dataSourceId(),
+      data_source_id: await resolveDataSourceId(),
     });
     const projects = res.results
       .map((page) => mapPropsToProject(page as never))

@@ -1,6 +1,6 @@
 import "server-only";
 import type { ProjectDetail } from "../model/types";
-import { notion, dataSourceId, notionEnabled } from "./notion-client";
+import { notion, resolveDataSourceId, notionEnabled } from "./notion-client";
 import { mapPropsToProject } from "./map";
 import { mapBlocks } from "./map-blocks";
 
@@ -31,7 +31,7 @@ export async function fetchProjectDetail(slug: string): Promise<ProjectDetail | 
   if (!notionEnabled()) return null;
   try {
     const res = await notion().dataSources.query({
-      data_source_id: dataSourceId(),
+      data_source_id: await resolveDataSourceId(),
       filter: { property: "Slug", rich_text: { equals: slug } },
     });
     const page = res.results[0];
