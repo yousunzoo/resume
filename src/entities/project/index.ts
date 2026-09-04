@@ -9,10 +9,11 @@ export type {
   RichSpan,
 } from "./model/types";
 
-export { projects, portfolioIntro } from "./model/projects";
+export { portfolioIntro } from "./model/fallback-projects";
 export {
-  getProjectBySlug,
-  featuredProjects,
+  getProjects,
+  getFeaturedProjects,
+  getProjectDetail,
   projectCategories,
 } from "./model/selectors";
 
