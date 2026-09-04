@@ -7,7 +7,7 @@ export const fallbackProjects: Project[] = [
   {
     slug: "bankmall",
     title: "뱅크몰 — 금융 플랫폼 프론트엔드 (신청 플로우·정책·매칭)",
-    category: "클라이언트 SI",
+    category: "금융 서비스",
     featured: true,
     order: 1,
     period: "2024.02 – 2025.06",
@@ -22,7 +22,7 @@ export const fallbackProjects: Project[] = [
   {
     slug: "moyeoba",
     title: "모여바 — USJ 티켓·e-SIM 여행 바우처 셀프 관리 웹",
-    category: "클라이언트 SI",
+    category: "플랫폼",
     featured: true,
     order: 2,
     period: "2026.02 – 2026.08",
@@ -47,7 +47,7 @@ export const fallbackProjects: Project[] = [
   {
     slug: "clickb-admin",
     title: "클릭비 — 제안서·포트폴리오 운영 어드민(제안서 자동 구조화·발행)",
-    category: "클라이언트 SI",
+    category: "백오피스·자동화",
     featured: true,
     order: 3,
     period: "2026.03 – 진행",
@@ -71,7 +71,7 @@ export const fallbackProjects: Project[] = [
   {
     slug: "directg",
     title: "DirectG — 사용자 웹 신규 구축 + PHP 레거시 관리자 이관",
-    category: "클라이언트 SI",
+    category: "플랫폼",
     featured: true,
     order: 4,
     period: "진행",
@@ -86,7 +86,7 @@ export const fallbackProjects: Project[] = [
   {
     slug: "clickb-site",
     title: "클릭비 — IT 외주 에이전시 공개 사이트·컴포넌트 모노레포",
-    category: "자체 도구·인프라",
+    category: "플랫폼",
     featured: true,
     order: 5,
     period: "2025.06 – 진행",
@@ -109,7 +109,7 @@ export const fallbackProjects: Project[] = [
   {
     slug: "chatly",
     title: "Chatly — 맞춤형 언어학습 모바일 앱·어드민",
-    category: "클라이언트 SI",
+    category: "모바일 앱",
     featured: false,
     order: null,
     period: "2025.03 – 진행",
@@ -124,7 +124,7 @@ export const fallbackProjects: Project[] = [
   {
     slug: "cluvit",
     title: "Cluvit — 도메인 거래·옥션·운영 플랫폼",
-    category: "클라이언트 SI",
+    category: "플랫폼",
     featured: false,
     order: null,
     period: "프로젝트 수행",
@@ -137,7 +137,7 @@ export const fallbackProjects: Project[] = [
   {
     slug: "you-are-365",
     title: "you-are-365 — 뷰티·헬스케어 모바일 사용자 서비스",
-    category: "클라이언트 SI",
+    category: "플랫폼",
     featured: false,
     order: null,
     period: "진행",
@@ -152,7 +152,7 @@ export const fallbackProjects: Project[] = [
   {
     slug: "damoa",
     title: "DAMOA — 인테리어·건설 견적 매칭 플랫폼",
-    category: "클라이언트 SI",
+    category: "플랫폼",
     featured: false,
     order: null,
     period: "운영",
@@ -167,7 +167,7 @@ export const fallbackProjects: Project[] = [
   {
     slug: "proposal-template",
     title: "제안서 템플릿·발행 시스템 — 원문→웹 제안서 발행 풀스택",
-    category: "자체 도구·인프라",
+    category: "백오피스·자동화",
     featured: false,
     order: null,
     period: "진행",
@@ -190,7 +190,7 @@ export const fallbackProjects: Project[] = [
   {
     slug: "si-harness",
     title: "SI Harness — AI 협업 SI 워크플로우 자동화 환경",
-    category: "자체 도구·인프라",
+    category: "백오피스·자동화",
     featured: false,
     order: null,
     period: "2026.05 – 진행",
@@ -205,7 +205,7 @@ export const fallbackProjects: Project[] = [
   {
     slug: "proposal-automation",
     title: "AI 제안서 자동화 시스템 — 공고 수집→RAG 제안서 초안",
-    category: "자체 도구·인프라",
+    category: "백오피스·자동화",
     featured: false,
     order: null,
     period: "프로토타입",

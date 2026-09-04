@@ -21,8 +21,19 @@ const iconBase = {
   "aria-hidden": true,
 };
 
-/* 클라이언트 SI — connected nodes (client delivery / platforms) */
-function ClientSIIcon(props: IconProps) {
+/* 금융 서비스 — stacked coins / value flow */
+function FinanceIcon(props: IconProps) {
+  return (
+    <svg {...iconBase} {...props}>
+      <ellipse cx="12" cy="6" rx="6.5" ry="2.4" />
+      <path d="M5.5 6v5c0 1.3 2.9 2.4 6.5 2.4s6.5-1.1 6.5-2.4V6" />
+      <path d="M5.5 11v5c0 1.3 2.9 2.4 6.5 2.4s6.5-1.1 6.5-2.4v-5" />
+    </svg>
+  );
+}
+
+/* 플랫폼 — connected nodes (multi-actor platforms) */
+function PlatformIcon(props: IconProps) {
   return (
     <svg {...iconBase} {...props}>
       <circle cx="6" cy="6" r="2.3" />
@@ -33,22 +44,22 @@ function ClientSIIcon(props: IconProps) {
   );
 }
 
-/* 자체 도구·인프라 — gear / automation */
-function ToolingIcon(props: IconProps) {
+/* 모바일 앱 — phone / device */
+function MobileIcon(props: IconProps) {
   return (
     <svg {...iconBase} {...props}>
-      <circle cx="12" cy="12" r="3.2" />
-      <path d="M12 3v2.4M12 18.6V21M4.2 7.5l2 1.2M17.8 15.3l2 1.2M4.2 16.5l2-1.2M17.8 8.7l2-1.2" />
+      <rect x="7" y="3" width="10" height="18" rx="2.2" />
+      <path d="M10.5 18h3" />
     </svg>
   );
 }
 
-/* 개인·학습 — open book / spark */
-function LearningIcon(props: IconProps) {
+/* 백오피스·자동화 — gear / automation */
+function AutomationIcon(props: IconProps) {
   return (
     <svg {...iconBase} {...props}>
-      <path d="M12 6c-1.8-1.3-4-1.8-6.5-1.6v11c2.5-.2 4.7.3 6.5 1.6 1.8-1.3 4-1.8 6.5-1.6v-11C16 4.2 13.8 4.7 12 6z" />
-      <path d="M12 6v11" />
+      <circle cx="12" cy="12" r="3.2" />
+      <path d="M12 3v2.4M12 18.6V21M4.2 7.5l2 1.2M17.8 15.3l2 1.2M4.2 16.5l2-1.2M17.8 8.7l2-1.2" />
     </svg>
   );
 }
@@ -60,11 +71,19 @@ export interface CategoryMeta {
 }
 
 export const CATEGORY_META: Record<ProjectCategory, CategoryMeta> = {
-  "클라이언트 SI": { label: "Client SI", Icon: ClientSIIcon },
-  "자체 도구·인프라": { label: "Tooling · Infra", Icon: ToolingIcon },
-  "개인·학습": { label: "Personal · Learning", Icon: LearningIcon },
+  "금융 서비스": { label: "Financial Service", Icon: FinanceIcon },
+  "플랫폼": { label: "Platform", Icon: PlatformIcon },
+  "모바일 앱": { label: "Mobile App", Icon: MobileIcon },
+  "백오피스·자동화": { label: "Back-office · Automation", Icon: AutomationIcon },
 };
 
+/** Fallback for any category not (yet) in CATEGORY_META — e.g. a Notion select
+ *  option added upstream before the code catches up. Keeps prerender from
+ *  crashing on unknown live data (see getCategoryMeta). */
+const FALLBACK_META: CategoryMeta = { label: "Project", Icon: PlatformIcon };
+
 export function getCategoryMeta(category: ProjectCategory): CategoryMeta {
-  return CATEGORY_META[category];
+  // Live Notion data can drift from the ProjectCategory union; never assume the
+  // key exists. Falling back beats throwing during static generation.
+  return CATEGORY_META[category] ?? FALLBACK_META;
 }

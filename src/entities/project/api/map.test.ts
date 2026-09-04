@@ -20,7 +20,7 @@ describe("mapPropsToProject", () => {
     const page = {
       properties: {
         Project: { type: "title", title: [{ plain_text: "뱅크몰" }] },
-        Category: { type: "select", select: { name: "클라이언트 SI" } },
+        Category: { type: "select", select: { name: "금융 서비스" } },
         Featured: { type: "checkbox", checkbox: true },
         Order: { type: "number", number: 1 },
         Period: { type: "rich_text", rich_text: [{ plain_text: "2024.02 – 2024.03" }] },
@@ -35,7 +35,7 @@ describe("mapPropsToProject", () => {
     expect(mapPropsToProject(page as never)).toEqual({
       slug: "bankmall-mortgage-flow",
       title: "뱅크몰",
-      category: "클라이언트 SI",
+      category: "금융 서비스",
       featured: true,
       order: 1,
       period: "2024.02 – 2024.03",

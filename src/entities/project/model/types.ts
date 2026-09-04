@@ -1,9 +1,10 @@
 import type { NotionBlock } from "./notion-block";
 
 export type ProjectCategory =
-  | "클라이언트 SI"
-  | "자체 도구·인프라"
-  | "개인·학습";
+  | "금융 서비스"
+  | "플랫폼"
+  | "모바일 앱"
+  | "백오피스·자동화";
 
 // 카드/목록용 — Notion DB 속성에서 매핑
 export interface Project {
