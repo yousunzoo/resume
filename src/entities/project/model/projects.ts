@@ -64,12 +64,6 @@ export const projects: Project[] = [
       "Zustand 커스텀 스토어 인터페이스(createStore)로 상태·액션 접근을 일관화하고 미들웨어·리셋을 표준화",
       "모바일 신청 경험 안정화 — iOS Safari visualViewport resize 리스너로 키패드 노출 시 레이아웃 대응, 한글 IME isComposing 처리로 keydown 중복 입력 방지",
     ],
-    interviewPoints: [
-      "Context를 유지하지 않고 상태 책임을 분리한 이유",
-      "범용 Form 추상화를 어디에서 멈춰야 하는가",
-      "금융 정책처럼 변경 주기가 다른 로직을 어떻게 격리하는가",
-      "이탈률 감소와 구조 개선의 관계를 어떻게 설명할 것인가",
-    ],
     relatedPosts: [
       { title: "pathname 기반 Multi-Step flow 설계", href: DEVLOG_URL },
       { title: "모바일 환경에서 키패드 등장에 따른 반응형 구현하기", href: DEVLOG_URL },
@@ -136,12 +130,6 @@ export const projects: Project[] = [
       "State Machine 없이 공통 인터페이스 + 상품별 차이 허용",
       "대출 타입 분기를 Discriminated Union + Exhaustiveness Checking으로 안전하게 처리 — 미처리 케이스를 컴파일 타임에 검출",
     ],
-    interviewPoints: [
-      "URL을 상태로 사용할 때 얻는 것과 치르는 비용",
-      "query 조작이나 직접 접근을 어떻게 막았는가",
-      "새로고침 시 클라이언트 상태 복구 문제를 어떻게 봤는가",
-      "State Machine을 도입하지 않은 이유",
-    ],
     relatedPosts: [
       { title: "pathname 기반 Multi-Step flow 설계", href: DEVLOG_URL },
       { title: "타입 확장하기, 좁히기", href: DEVLOG_URL },
@@ -207,12 +195,6 @@ export const projects: Project[] = [
       "정책 로직의 일부 중복은 독립 변경을 위해 의도적으로 유지",
       "JavaScript → TypeScript, styled-components → Tailwind CSS 점진적 전환",
     ],
-    interviewPoints: [
-      "Strategy Pattern이 단순 함수 분리와 다른 점",
-      "일부 코드 중복을 일부러 남긴 이유",
-      "공통 컴포넌트의 경계를 정하는 기준",
-      "운영 중인 서비스에서 구조를 안전하게 바꾸는 방법",
-    ],
     relatedPosts: [
       { title: "타입 확장하기, 좁히기", href: DEVLOG_URL },
       { title: "템플릿 리터럴 타입을 키로 갖는 객체 만들기", href: DEVLOG_URL },
@@ -275,12 +257,6 @@ export const projects: Project[] = [
       "클라이언트 검증과 서버 최종 판단의 책임 분리",
       "Slack Webhook으로 정책·공통 코드 변경 운영 전달 자동화",
       "제안서 발송·상담 관리·관리자 감독 등 주요 업무 화면 구현",
-    ],
-    interviewPoints: [
-      "Zod Validation과 서버 Validation의 책임을 어떻게 나눴는가",
-      "프론트엔드 범위를 운영 알림까지 넓힌 이유",
-      "B2B2C 서비스에서 상담사·관리자·고객의 데이터 관점 차이",
-      "약 70% 기여에서 직접 책임진 범위",
     ],
     relatedPosts: [
       { title: "타입스크립트와 에러 핸들링, 그리고 모킹", href: DEVLOG_URL },
@@ -347,14 +323,6 @@ export const projects: Project[] = [
       "커스텀 Fetcher 인터페이스로 API 호출부 추상화",
       "DTO ↔ Form 변환 레이어 도입",
     ],
-    interviewPoints: [
-      "WebView 메시지를 믿으면 안 되는 이유와 서버 검증 위치",
-      "React Native에서 웹 인증을 연결할 때 쿠키가 걸리는 이유",
-      "httpOnly Cookie를 Native로 가져오지 않고 인증 결과만 동기화한 이유",
-      "웹과 네이티브의 책임 경계를 어떻게 나눴는가 — 햅틱 실행 주체와 플랫폼 차이 흡수",
-      "Fetcher 추상화의 적절한 경계",
-      "API DTO와 Form Model을 분리하는 이유",
-    ],
     relatedPosts: [
       { title: "Next.js fetch를 활용한 API fetcher 인터페이스 설계", href: DEVLOG_URL },
       { title: "React Native WebView에서 httpOnly Cookie 인증을 연결한 방법", href: DEVLOG_URL },
@@ -420,12 +388,6 @@ export const projects: Project[] = [
       "관리자 권한과 운영 로그 정합성 확보",
       "언어 리소스와 UI 구조 분리로 다국어 확장",
     ],
-    interviewPoints: [
-      "사용자 대시보드와 관리자 백오피스의 상태 책임은 어떻게 다른가",
-      "옥션처럼 갱신 빈도가 높은 서버 데이터를 어떻게 다뤘는가",
-      "관리자 권한을 프론트엔드와 서버에서 어떻게 나눴는가",
-      "다국어 서비스에서 UI 구조와 번역 리소스를 어떻게 분리했는가",
-    ],
     relatedPosts: [
       { title: "Suspense와 ErrorBoundary", href: DEVLOG_URL },
       { title: "서버 사이드 리액트", href: DEVLOG_URL },
@@ -479,7 +441,7 @@ export const projects: Project[] = [
       },
       {
         heading: "3D를 데이터 시각화로 묶었습니다",
-        body: "홈 오비탈(react-three-fiber)이 포트폴리오 해시태그 빈도를 집계한 키워드 풀을 렌더하도록 해, 콘텐츠가 늘면 시각화도 함께 자라도록 했습니다. 장식용 3D가 아니라 실제 데이터가 흐르는 화면으로 뒀습니다.",
+        body: "홈 오비탈(react-three-fiber)이 포트폴리오 해시태그 빈도를 집계한 키워드 풀을 렌더하도록 해, 콘텐츠가 늘면 시각화도 함께 자라도록 했습니다. 실제 데이터가 흐르는 화면으로 뒀습니다.",
       },
       {
         heading: "관측성을 패키지로 표준화했습니다",
@@ -504,14 +466,6 @@ export const projects: Project[] = [
       "FSD 레이어 규칙을 커스텀 ESLint 플러그인 3종(layer-imports·public-api·slice-segments)으로 강제",
       "스캐폴딩 CLI를 plan→dry-run→apply→self-check→manifest 파이프라인으로 설계 — 덮어쓰기 방지·생성 이력 추적·doctor 재검증",
       "changesets 버전 관리 · 스캐폴딩 CLI로 앱·패키지 추가 자동화",
-    ],
-    interviewPoints: [
-      "마케팅 사이트에 모노레포·디자인시스템까지 도입한 판단 기준과 손익",
-      "ISR revalidate와 fetch 태그 캐싱을 함께 쓴 이유, 온디맨드 갱신과의 트레이드오프",
-      "3D를 데이터 시각화로 묶어 얻은 것과 성능 관리 방법",
-      "공유 패키지 경계를 어디서 끊었고 앱과 패키지 책임을 어떻게 나눴는가",
-      "FSD 규칙을 문서가 아니라 ESLint로 강제한 이유와 커스텀 rule 설계",
-      "스캐폴딩 CLI에서 파일을 바로 쓰지 않고 plan·dry-run·manifest를 둔 이유",
     ],
     relatedPosts: [
       { title: "FSD 규칙을 ESLint로 강제해보기", href: DEVLOG_URL },
@@ -559,7 +513,7 @@ export const projects: Project[] = [
     problem:
       "제안서 원문 형식이 제각각이라 사람이 매번 섹션을 나누고 조판했고, 서버 데이터(제안서·포트폴리오·프로젝트)와 편집 UI 상태, 폼 입력이 뒤섞이면 화면이 커질수록 상태 추적이 어려워집니다. AI 구조화 결과를 그대로 믿을 수도 없어, 사람이 검수·보정할 편집 계층이 필요했습니다.",
     decision:
-      "제안서를 데이터 × 렌더러로 분리하고, 서버/UI/폼 상태를 3분할했으며, AI는 '생성'이 아니라 '구조화 + 검수 대상'으로 한정하고 규칙 기반 폴백을 뒀습니다.",
+      "제안서를 데이터 × 렌더러로 분리하고, 서버/UI/폼 상태를 3분할했으며, AI는 '구조화 + 검수 대상'으로 한정하고 규칙 기반 폴백을 뒀습니다.",
     decisions: [
       {
         heading: "제안서를 데이터 × 렌더러로 분리했습니다",
@@ -600,12 +554,6 @@ export const projects: Project[] = [
       "Feature-Sliced Design으로 제안서·포트폴리오·프로젝트·프롬프트 도메인 분리",
       "AI 프롬프트 관리(prompts)와 결과 섹션 검수·규칙 기반 폴백",
       "발행 URL(proposals/[slug])·미리보기, 신원 비노출 기본값",
-    ],
-    interviewPoints: [
-      "서버/UI/폼 상태를 3분할한 기준과 각 계층의 책임",
-      "AI를 '구조화 + 검수 대상'으로 한정한 이유와 무손실·폴백 보장 방법",
-      "데이터 × 렌더러 분리가 템플릿 유지보수에 주는 이점",
-      "TanStack Router 타입세이프 라우팅과 FSD로 얻은 확장성",
     ],
     relatedPosts: [
       { title: "제안서 페이지 템플릿 개발 노트", href: DEVLOG_URL },
@@ -686,12 +634,6 @@ export const projects: Project[] = [
       "USJ 입장권 방문일 변경 다단계 플로우 구현(React Hook Form + Zod)",
       "카카오 인앱 브라우저 이탈 처리 · Slack 에러 로깅 · GA4 커스텀 analytics 구축",
     ],
-    interviewPoints: [
-      "FSD의 entities/features/widgets/shared 경계를 어떤 기준으로 나눴고, 상품 5종 확장 시 중복을 어떻게 통제했나",
-      "BaseFetcher 인터셉터 파이프라인과 서버/클라이언트 분기 설계, fetch가 4xx에 reject하지 않는 문제를 어떻게 보정했나",
-      "NextAuth Credentials + JWT에서 미들웨어 가드와 401 인터셉터의 자동 로그아웃을 어떻게 연동했나",
-      "방문일 변경 캘린더의 재고·차액 조회 queryKey를 어떻게 설계했나",
-    ],
     relatedPosts: [
       { title: "Feature Sliced Design 그게 뭔데...", href: DEVLOG_URL },
       { title: "Next.js fetch를 활용한 API fetcher 인터페이스 설계", href: DEVLOG_URL },
@@ -700,7 +642,190 @@ export const projects: Project[] = [
     ],
   },
 
-  // ── 10. SI Harness — AI 협업 SI 워크플로우 자동화 환경 ────────────────────
+  // ── 10. DirectG — 사용자 웹 신규 구축 + PHP 레거시 관리자 이관 ────────────
+  {
+    slug: "directg",
+    title: "DirectG — 사용자 웹 신규 구축 + PHP 레거시 관리자 이관",
+    category: "플랫폼",
+    cardCategory: "SI · Migration",
+    angle: "레거시 점진 이관",
+    featured: false,
+    period: "진행",
+    role: "사용자 웹·신규 관리자 Frontend · 레거시 분석·마이그레이션 맵 설계",
+    tech: ["Next.js", "React", "TypeScript", "Vite", "TanStack Router", "pnpm 모노레포"],
+    headline:
+      "운영 중인 PHP 커머스 백오피스를 멈추지 않고 Next·Vite 구조로 옮기기 위해 500개 이상 화면·핸들러를 기능 단위로 분석하고 점진 이관 기반을 마련",
+    keyResult:
+      "PHP 레거시 관리자 500+ 화면·핸들러를 기능 단위로 분류하고, strangler 방식 화면 단위 이관 맵·신규 관리자 API 계약 기반 확보",
+    tags: ["PHP → Next.js", "Strangler", "레거시 이관", "pnpm 모노레포"],
+    summary:
+      "DirectG 사용자 웹 신규 개발과 PHP 레거시 관리자 현대화 이관을 병행한 프로젝트입니다. 기능 개선보다 동작 동일성을 우선하고, 트래픽은 PHP에 둔 채 옮긴 경로만 신규 앱으로 보내는 strangler 방식으로 위험을 통제했습니다.",
+    overview:
+      "DirectG 사용자 웹 신규 개발과 PHP 레거시 관리자 시스템의 현대화 이관을 병행하는 프로젝트입니다. 레거시 백오피스는 상품·주문·회원·프로모션·통계·파트너·공급사 연동 등 운영 전반을 포함하며, 신규 관리자는 Vite + TanStack Router SPA로 이관 중입니다.",
+    scope: [
+      "PHP `_Admin_` 하위 약 530개 파일·상위 메뉴 13개를 화면·처리 핸들러·AJAX·엑셀·동기화 패턴으로 분류",
+      "로그인·권한 등급·메뉴 숨김 기반 인가·슈퍼 관리자 영역 등 레거시 인증/권한 모델의 리스크와 이관 방안 정리",
+      "상품·주문·재고·프로모션·통계 영역의 데이터 소스·도메인 클래스·외부 API 연동·상태 전이 문서화",
+      "레거시 화면을 React/Vite/TanStack 구조의 screen·route·API 계약으로 쪼개는 마이그레이션 맵 작성",
+    ],
+    problem:
+      "운영 중인 커머스 백오피스라 한 번에 갈아엎을 수 없었습니다. 결제 정산·주문 상품·발송·배송 타입 등 여러 상태 축이 함께 주문 처리를 결정하고, 디지털 키 발급·취소·환불·적립금 확정 시점이 서로 맞물려 있어, 동작을 그대로 유지한 채 옮겨야 했습니다.",
+    decision:
+      "기능 개선보다 동작 동일성을 우선하고, 선분석 후 구현·DB 스키마 비변경·작은 단위를 원칙으로 삼았으며, 경로 단위로 롤백 가능한 strangler/reverse proxy 방식으로 이관했습니다.",
+    decisions: [
+      {
+        heading: "동작 동일성을 최우선 원칙으로 삼았습니다",
+        body: "이관 과정에서 기능을 개선하려는 유혹을 눌렀습니다. DB 스키마는 바꾸지 않고, 세션 구조 개편은 후순위로 미뤄, 이관 자체의 변경 폭을 최소화했습니다. 옮긴 결과가 기존과 같은지부터 검증할 수 있게 범위를 좁혔습니다.",
+      },
+      {
+        heading: "선분석 후 구현 — 화면 단위 마이그레이션 맵을 먼저 그렸습니다",
+        body: "500개가 넘는 화면·핸들러를 화면·처리·AJAX·엑셀·동기화 패턴으로 분류하고, 주문 운영처럼 하나의 핸들러가 PG 취소·포인트 환불·재발송·송장 변경 등 여러 mode를 처리하는 구조를 상태 전이와 감사 로그 기준으로 문서화했습니다.",
+      },
+      {
+        heading: "트래픽은 PHP에 두고 옮긴 경로만 신규 앱으로 보냈습니다",
+        body: "기본 트래픽은 레거시 PHP가 받고, 이관이 끝난 경로만 신규 앱으로 프록시하는 strangler 방식을 택했습니다. 문제가 생기면 경로 단위로 되돌릴 수 있어, 운영을 멈추지 않고 점진적으로 옮길 수 있었습니다.",
+      },
+    ],
+    result:
+      "500개 이상의 레거시 화면·핸들러를 기능 단위로 분석하고, 인증·권한·외부 공급사 연동·데이터 계약을 문서화해 점진적 마이그레이션 기반을 마련했습니다.",
+    results: [
+      "레거시 관리자 500+ 화면·핸들러를 기능 패턴 단위로 분류",
+      "주문·결제·키발급·환불·권한 도메인을 상태 전이·감사 로그 기준으로 문서화",
+      "화면 단위 마이그레이션 맵과 신규 관리자 API 계약 기반 확보",
+      "경로 단위 롤백이 가능한 strangler 이관 전략 수립",
+    ],
+    highlights: [
+      "PHP `_Admin_` 500+ 파일·메뉴 13개를 화면·핸들러·AJAX·엑셀·동기화 패턴으로 분석",
+      "strangler/reverse proxy로 옮긴 경로만 신규 앱에 보내고 경로 단위 롤백 보장",
+      "주문 운영 핸들러의 PG 취소·포인트 환불·재발송·송장 변경 mode를 상태 전이로 정리",
+      "업무 로그와 PG/API 디버깅 로그가 분리된 감사 추적성까지 이관 대상으로 포함",
+      "신규 관리자를 Vite + TanStack Router SPA로 화면 단위 이관",
+    ],
+    relatedPosts: [
+      { title: "운영 중인 PHP 서비스를 멈추지 않고 Next.js로 옮긴 방법", href: DEVLOG_URL },
+      { title: "SI 프로젝트용 Start-Kit CLI 만들기", href: DEVLOG_URL },
+    ],
+  },
+
+  // ── 11. you-are-365 — 뷰티·헬스케어 사용자 서비스 ─────────────────────────
+  {
+    slug: "you-are-365",
+    title: "you-are-365 — 뷰티·헬스케어 모바일 사용자 서비스",
+    category: "플랫폼",
+    cardCategory: "SI",
+    angle: "모바일 사용자 서비스",
+    featured: false,
+    period: "진행",
+    role: "Next.js App Router 사용자 화면 Frontend 개발",
+    tech: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS"],
+    headline:
+      "챗봇·시술·화장품·마이페이지까지 모바일 중심 라우트를 구현하고, API 동기화·자산 생성 스크립트를 포함한 프론트엔드 개발 환경을 정리",
+    keyResult:
+      "초기 스캐폴드를 챗봇·시술·화장품·마이페이지 등 실제 서비스 라우트로 구현하고, 외부 스펙·자산 변화에 대응하는 개발 흐름 구성",
+    tags: ["Next.js", "App Router", "모바일 웹"],
+    summary:
+      "Next.js 15·React 19 기반 뷰티·헬스케어 사용자 서비스입니다. 초기 스캐폴드에서 출발해 챗봇·시술·화장품·마이페이지·문의·FAQ·구매 내역 등 실제 서비스 화면 라우트를 구현하고, 앱형 사용자 경험에 맞춰 모바일 레이아웃과 홈 레이아웃을 분리했습니다.",
+    overview:
+      "Next.js 15, React 19 기반의 뷰티·헬스케어 성격 사용자 서비스입니다. 초기 스캐폴드에서 출발했지만 현재는 챗봇·시술·화장품·마이페이지·문의·FAQ·구매 내역 등 실제 서비스 화면 라우트가 구현되어 있습니다.",
+    scope: [
+      "App Router 기반 홈·챗봇·시술 상세·화장품 상세·마이페이지·설정·약관·문의·FAQ·피부 타입·구매 내역 화면 구성",
+      "모바일 레이아웃과 홈 레이아웃을 분리해 앱형 사용자 경험에 맞춘 페이지 구조 설계",
+      "API 동기화 스크립트·아이콘 생성 스크립트로 외부 스펙·자산 변화에 대응하는 개발 흐름 구성",
+      "Storybook 기반 컴포넌트 확인 환경과 lint/build 명령 정리",
+    ],
+    problem:
+      "스캐폴드 상태의 프로젝트를 실제 서비스로 키우려면, 화면을 늘리는 것과 별개로 외부 API 스펙·아이콘 자산이 바뀔 때마다 손으로 맞추는 반복 작업이 병목이 됩니다. 앱형 경험을 노리는 만큼 모바일과 일반 레이아웃의 책임도 뒤섞이면 안 됐습니다.",
+    decision:
+      "화면 라우트를 App Router 구조로 나누고, 모바일·홈 레이아웃을 분리했으며, 외부 스펙·자산 변화는 동기화 스크립트로 흡수했습니다.",
+    decisions: [
+      {
+        heading: "모바일 레이아웃과 홈 레이아웃을 분리했습니다",
+        body: "앱형 사용자 경험을 목표로, 하단 네비게이션 중심의 모바일 레이아웃과 홈 레이아웃을 별개의 책임으로 나눴습니다. 화면마다 레이아웃 분기가 흩어지지 않도록 라우트 그룹 단위로 구조를 잡았습니다.",
+      },
+      {
+        heading: "외부 스펙·자산 변화를 스크립트로 흡수했습니다",
+        body: "API 동기화 스크립트와 아이콘 생성 스크립트를 두어, 서버 스펙이나 디자인 자산이 바뀔 때 손으로 맞추는 대신 스크립트로 재생성하도록 개발 흐름을 정리했습니다.",
+      },
+    ],
+    result:
+      "챗봇·상품/시술 상세·마이페이지 등 모바일 중심 라우트를 구현하고, API 동기화와 자산 생성 스크립트를 포함한 프론트엔드 개발 환경을 정리했습니다.",
+    results: [
+      "챗봇·시술·화장품·마이페이지 등 실제 서비스 라우트 구현",
+      "모바일·홈 레이아웃 분리로 앱형 사용자 경험에 맞춘 구조 확보",
+      "API 동기화·아이콘 생성 스크립트로 외부 변화 대응 흐름 정리",
+    ],
+    highlights: [
+      "App Router로 홈·챗봇·시술·화장품·마이페이지·설정·약관·문의·FAQ 라우트 구성",
+      "챗봇 대화 플로우(`chatbot/[chatRoomId]`)와 시술·화장품 목록/상세 구현",
+      "모바일 레이아웃과 홈 레이아웃 분리 설계",
+      "API 동기화·아이콘 생성 스크립트로 외부 스펙·자산 변화 대응",
+      "Storybook 기반 컴포넌트 확인 환경 구성",
+    ],
+  },
+
+  // ── 12. DAMOA — 인테리어·건설 견적 매칭 플랫폼 ───────────────────────────
+  {
+    slug: "damoa",
+    title: "DAMOA — 인테리어·건설 견적 매칭 플랫폼",
+    category: "플랫폼",
+    cardCategory: "SI",
+    angle: "3주체 권한·상담",
+    featured: false,
+    period: "운영",
+    role: "사용자·파트너 웹 + 운영자 백오피스 Frontend 개발",
+    tech: ["Next.js 15", "React", "TypeScript", "Tailwind CSS"],
+    headline:
+      "사용자·파트너·운영자 3주체를 한 서비스에서 처리하기 위해 역할 기반 인증/인가, 폴링 기반 상담 채팅, SEO·보안 대응을 함께 설계",
+    keyResult:
+      "JWT 역할 기반 라우트 그룹 접근 제어·폴링 차등 갱신 상담 채팅·SEO/미들웨어 보안 대응을 하나의 서비스로 통합",
+    tags: ["역할 기반 인가", "폴링 차등 갱신", "SEO·보안"],
+    summary:
+      "인테리어·건설 시공 견적을 요청·매칭·상담·거래·리뷰로 연결하는 플랫폼입니다. 일반 사용자·파트너 기업·운영자 세 주체가 각기 다른 권한과 목적으로 접근하는 구조라, 인증/인가·상태 전이·상담·SEO·관리자 운영 기능이 핵심 과제였습니다.",
+    overview:
+      "인테리어·건설 시공 견적을 요청·매칭·상담·거래·리뷰로 연결하는 플랫폼입니다. 일반 사용자·파트너 기업·운영자 세 주체가 각기 다른 권한과 목적을 갖고 접근하는 구조라 인증/인가·상태 전이·상담·SEO·관리자 운영 기능이 핵심 과제였습니다.",
+    scope: [
+      "사용자·파트너 라우트, 견적 요청 검색, 파트너 대시보드, 회사 인증, 파트너 프로필 관리, 채팅, 마이페이지 등 주요 화면 구현",
+      "운영자 백오피스 — 문의·FAQ·공지·CMS 카테고리·지역·고객/기업 사용자 관리·채팅 구현",
+      "JWT 세션 역할 정보 기반 라우트 그룹별 접근 제어 + 소셜/이메일/토큰 로그인 흐름을 동일 세션 규격으로 통합",
+      "Next.js 미들웨어 취약점 대응, 프록시 뒤 호스트 인식/리다이렉트 문제 해결, 검색 유입을 고려한 SEO 구조 정리",
+    ],
+    problem:
+      "사용자·파트너·운영자가 같은 견적 데이터를 서로 다른 권한과 관점으로 다뤄야 했습니다. 상담 채팅은 즉시성이 필요했지만 WebSocket 인프라 없이 풀어야 했고, 검색 유입이 중요한 서비스라 SEO와 프록시 환경의 호스트 인식·미들웨어 보안까지 함께 걸려 있었습니다.",
+    decision:
+      "역할을 JWT 세션에 담아 라우트 그룹 단위로 인가하고, 상담 채팅은 폴링 차등 갱신으로 즉시성을 확보했으며, SEO·미들웨어 보안을 서비스 구조에 반영했습니다.",
+    decisions: [
+      {
+        heading: "역할을 라우트 그룹 단위 인가로 통합했습니다",
+        body: "JWT 세션의 역할 정보를 기준으로 사용자·파트너·운영자 라우트 그룹의 접근을 제어하고, 소셜·이메일·토큰 로그인 흐름을 동일한 세션 규격으로 통합했습니다. 로그인 경로가 여러 개여도 인가 기준은 하나로 유지했습니다.",
+      },
+      {
+        heading: "상담 채팅을 폴링 차등 갱신으로 풀었습니다",
+        body: "WebSocket 없이 폴링으로 상담 채팅의 즉시성을 확보하되, 변경이 감지될 때만 전체 데이터를 갱신하는 차등 갱신으로 과도한 요청을 줄였습니다. 인프라 제약 안에서 실시간성과 서버 부하를 함께 관리했습니다.",
+      },
+      {
+        heading: "SEO·미들웨어 보안을 서비스 구조에 반영했습니다",
+        body: "검색 유입을 고려한 SEO 구조를 정리하고, Next.js 미들웨어 취약점과 프록시 뒤 호스트 인식·리다이렉트 문제를 함께 대응해, 기능뿐 아니라 유입·보안까지 서비스가 정상 동작하도록 다뤘습니다.",
+      },
+    ],
+    result:
+      "사용자·파트너·운영자가 공존하는 견적 매칭 플랫폼에서 역할 기반 인증/인가, 파트너 견적·프로필 관리, 운영자 CMS, 폴링 기반 상담 채팅, SEO·보안 대응을 Next.js 15 구조로 구현했습니다.",
+    results: [
+      "3주체 역할 기반 인증/인가를 라우트 그룹 접근 제어로 통합",
+      "WebSocket 없이 폴링 차등 갱신으로 상담 채팅 즉시성 확보·요청량 절감",
+      "파트너 견적·프로필 관리와 운영자 CMS 백오피스 구현",
+      "미들웨어 취약점·프록시 호스트 인식·SEO 구조 대응",
+    ],
+    highlights: [
+      "JWT 세션 역할 기반 사용자·파트너·운영자 라우트 그룹 접근 제어",
+      "소셜·이메일·토큰 로그인을 동일 세션 규격으로 통합",
+      "폴링 차등 갱신 상담 채팅 — 변경 감지 시에만 전체 갱신으로 요청량 절감",
+      "파트너 견적 요청 탐색·제안 전송·프로필(면허·키워드·지역) 관리 구현",
+      "운영자 CMS(문의·FAQ·공지·카테고리)·사용자 관리 백오피스 구현",
+      "Next.js 미들웨어 취약점·프록시 호스트 인식·리다이렉트·SEO 대응",
+    ],
+  },
+
+  // ── 13. SI Harness — AI 협업 SI 워크플로우 자동화 환경 ────────────────────
   {
     slug: "si-harness",
     title: "SI Harness — AI 협업 SI 워크플로우 자동화 환경",
@@ -750,7 +875,7 @@ export const projects: Project[] = [
       },
     ],
     result:
-      "SI 작업 기준을 프롬프트가 아니라 저장소에 남겨, 매번 다시 설명하지 않아도 AI가 같은 흐름으로 움직이는 작업 환경을 만들었습니다. 진행 중인 프로젝트로, 일부 단계 구성과 status.json 스키마는 계속 정리하고 있습니다.",
+      "SI 작업 기준을 저장소에 남겨, 매번 다시 설명하지 않아도 AI가 같은 흐름으로 움직이는 작업 환경을 만들었습니다. 진행 중인 프로젝트로, 일부 단계 구성과 status.json 스키마는 계속 정리하고 있습니다.",
     results: [
       "제안~인수 6단계 + 횡단 3흐름을 command·skill로 고정",
       "구현을 데이터/화면/검증 역할별 agent로 분리해 원인 추적성 확보",
@@ -764,15 +889,140 @@ export const projects: Project[] = [
       "status.json 단일 상태 원천 + 세션/압축 hook으로 상태 보존",
       "설계 단계에서 API를 상상하지 않고 확인·미확인을 명시하는 원칙",
     ],
-    interviewPoints: [
-      "AI에게 '알아서'를 맡기지 않고 작업 순서를 저장소에 고정한 이유",
-      "구현을 한 번에 시키지 않고 역할별 agent로 나눈 판단",
-      "진행 상태를 대화가 아니라 파일(status.json)에 남긴 이유",
-      "설계 단계에서 API를 상상하지 못하게 막은 방법",
-    ],
     relatedPosts: [
       { title: "SI 전용 AI Harness 만들기", href: DEVLOG_URL },
       { title: "SI 프로젝트용 Start-Kit CLI 만들기", href: DEVLOG_URL },
+    ],
+  },
+
+  // ── 14. 제안서 템플릿·발행 시스템 — 원문→웹 제안서 발행 풀스택 ────────────
+  {
+    slug: "proposal-template",
+    title: "제안서 템플릿·발행 시스템 — 원문→웹 제안서 발행 풀스택",
+    category: "백오피스·자동화",
+    cardCategory: "Tooling",
+    angle: "제안서 웹 발행",
+    featured: false,
+    period: "진행",
+    role: "사내 영업 도구 · 풀스택 설계·구현",
+    tech: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "OpenAI"],
+    headline:
+      "제안서 원문을 12개 섹션으로 구조화해 공개 링크·PDF로 발행하고, 관리 앱과 SSR 렌더러를 분리해 포트폴리오 기반 제안서 생성 워크플로우를 제품화",
+    keyResult:
+      "제안서 원문을 공개 URL(`/p/[slug]`)·PDF 산출물로 전환하고, 관리 앱과 공개 렌더러를 공유 DTO로 느슨하게 연결한 풀스택 프로토타입 구축",
+    tags: ["제안서 발행", "데이터 × 렌더러", "SSR 뷰어", "Prisma"],
+    summary:
+      "제안서 원본을 구조화해 공개 제안서 페이지와 포트폴리오 상세 페이지로 발행하는 Next.js 풀스택 프로토타입입니다. 생성·편집·발행 관리 앱(`proposal-template`)과 SSR 공개 뷰어(`proposal-for-client`)를 분리하고, 제안서를 데이터(내용) × 렌더러(디자인)로 나눠 템플릿화했습니다.",
+    overview:
+      "제안서 원본을 구조화해 공개 제안서 페이지와 포트폴리오 상세 페이지로 발행하는 Next.js 기반 풀스택 프로토타입입니다. `proposal-template`은 생성·편집·발행 관리 앱, `proposal-for-client`는 발행된 제안서·포트폴리오를 SSR로 렌더링하는 공개 뷰어로 분리되어 있습니다.",
+    scope: [
+      "제안서 입력 데이터를 섹션 구조로 정규화하고, 공개 URL·포트폴리오 상세 URL로 외부 전달 가능한 산출물로 전환",
+      "Next.js Route Handler API와 Prisma/Postgres 계층을 설계해 관리 기능을 별도 서버 없이 통합",
+      "공개 렌더러에서 제안서 본문·포트폴리오 상세·인쇄/PDF 흐름을 분리해 읽기·공유·출력 목적에 맞는 화면 구성",
+      "민감정보 제거 정책·샘플 데이터 익명화·스캔 스크립트 등 공개 가능성 검토 기준 정리",
+    ],
+    problem:
+      "영업 제안서를 PDF/PPT로 만들면 모바일 가독성이 떨어지고, 수정할 때마다 파일을 다시 공유해야 하며, 포트폴리오 상세로 연결하기 어려웠습니다. 관리 앱과 공개 뷰어가 같은 데이터 모델을 공유하지 않으면 발행 결과가 어긋날 위험도 있었습니다.",
+    decision:
+      "PDF 대신 웹 링크 발행을 택하고, 제안서를 데이터 × 렌더러로 분리했으며, AI는 섹션 구조화·문장 정리로 한정하고 rule-based fallback을 뒀습니다.",
+    decisions: [
+      {
+        heading: "PDF/PPT 대신 웹 링크 발행을 선택했습니다",
+        body: "산출물을 파일이 아니라 공개 URL(`/p/[slug]`)로 발행해 모바일 가독성, 수정 후 재공유, 포트폴리오 상세 연결 문제를 함께 풀었습니다. 인쇄/PDF 흐름은 별도로 두어 출력이 필요할 때만 쓰도록 분리했습니다.",
+      },
+      {
+        heading: "제안서를 데이터 × 렌더러로 분리했습니다",
+        body: "greeting·about·team·analysis·strategy·estimate·portfolio·architecture·qa·timeline·warranty·promise 12개 섹션을 `ProposalSectionsData` 공유 계약으로 관리하고, slug·projectInfo·raw content·sections·portfolioSlugs·published 상태로 제안서 데이터 모델을 잡아 관리 앱과 공개 렌더러를 느슨하게 연결했습니다.",
+      },
+      {
+        heading: "AI는 구조화·문장 정리로 한정하고 fallback을 뒀습니다",
+        body: "AI가 내용을 새로 꾸며내지 않도록 섹션 구조화와 가벼운 문장 정리에만 썼고, API 키 없음·빈 입력·refusal·예외 상황에서는 rule-based fallback으로 동작하도록 설계해 외부 API 상태와 무관하게 발행이 멈추지 않게 했습니다.",
+      },
+    ],
+    result:
+      "제안서 원문을 구조화해 공개 링크·PDF로 발행하는 Next.js 풀스택 프로토타입을 설계·구현하고, 관리 앱과 SSR 렌더러를 공유 DTO로 분리해 포트폴리오 기반 제안서 생성 워크플로우를 제품화했습니다.",
+    results: [
+      "제안서 원문을 공개 URL·PDF 산출물로 전환",
+      "12개 섹션 공유 계약으로 관리 앱·공개 렌더러를 느슨하게 연결",
+      "AI 구조화 + rule-based fallback으로 외부 API 상태와 무관하게 발행 지속",
+      "민감정보 제거·샘플 익명화 등 공개 가능성 검토 기준 정리",
+    ],
+    highlights: [
+      "관리 앱(`proposal-template`)과 SSR 공개 뷰어(`proposal-for-client`) 분리",
+      "`packages/shared` 제안서 DTO로 관리·렌더링 앱 간 데이터 계약 통일",
+      "`serverFetch`·내부 토큰·샘플 데이터 폴백으로 백엔드 준비 전에도 독립 실행",
+      "Mermaid·마크다운 렌더링·PDF 다운로드 흐름을 포함해 실제 영업 산출물화",
+      "AI 섹션 구조화 + deterministic fallback으로 입력 품질·API 상태에 견고",
+    ],
+    relatedPosts: [
+      { title: "제안서 페이지 템플릿 개발 노트", href: DEVLOG_URL },
+      { title: "[영업] 제안서 페이지 템플릿 초안 개발", href: DEVLOG_URL },
+    ],
+  },
+
+  // ── 15. AI 제안서 자동화 시스템 — 공고 수집→RAG 제안서 초안 ───────────────
+  {
+    slug: "proposal-automation",
+    title: "AI 제안서 자동화 시스템 — 공고 수집→RAG 제안서 초안",
+    category: "백오피스·자동화",
+    cardCategory: "AI · Automation",
+    angle: "RAG 영업 자동화",
+    featured: false,
+    period: "프로토타입",
+    role: "사내 업무 자동화 · 파이프라인 설계·구현",
+    tech: ["Next.js", "React", "TypeScript", "OpenAI", "Supabase", "pgvector", "Playwright"],
+    headline:
+      "외주 공고 수집부터 RAG 기반 포트폴리오 추천·AI 제안서 초안 생성까지 이어지는 Next.js 자동화 파이프라인을 구축",
+    keyResult:
+      "위시켓·프리모아 공고 수집 → 유사 사례 RAG 검색 → GPT 제안서 초안 생성까지 스크래핑·pgvector·Notion·Slack 연동으로 자동화",
+    tags: ["RAG", "pgvector", "스크래핑 자동화", "OpenAI"],
+    summary:
+      "외주 플랫폼 신규 공고를 수집하고, 상세 본문을 바탕으로 유사 포트폴리오 사례를 검색해 AI 제안서 초안을 생성하는 업무 자동화 프로토타입입니다. 단순 데모가 아니라 스크래핑·세션 보존·RAG·Notion 동기화·Slack 알림·운영 문서까지 포함한 실제 파이프라인으로 구성했습니다.",
+    overview:
+      "외주 플랫폼의 신규 공고를 수집하고, 상세 본문을 바탕으로 AI 제안서 초안을 생성하는 업무 자동화 프로토타입입니다. Project·Portfolio·Prompt를 핵심 엔티티로 나누고, 프로젝트 상태를 발견·검토·지원·미팅·계약 단계로 관리합니다.",
+    scope: [
+      "위시켓·프리모아 공고 목록·상세 본문을 수집하는 Playwright 스크래퍼와 브라우저 세션 복원 구성",
+      "Supabase PostgreSQL·Storage·pgvector RPC로 프로젝트·제안서·임베딩 데이터 관리",
+      "Notion 문서를 임베딩해 기존 제안서·포트폴리오 사례를 RAG 컨텍스트로 검색하는 흐름 설계",
+      "GPT 기반 제안서 생성·재생성·편집·상태 관리 API를 Next.js Route Handler로 구현",
+      "Vercel Cron·Slack 알림·세션 만료 대응·운영 문서까지 자동화 운영 관점으로 정리",
+    ],
+    problem:
+      "외주 공고를 사람이 매번 확인하고, 관련 포트폴리오를 찾아 제안서 초안을 쓰는 과정이 반복 노동이었습니다. AI에 공고만 던지면 회사 실제 사례와 동떨어진 초안이 나와, 유사 사례를 검색해 컨텍스트로 넣는 구조가 필요했습니다.",
+    decision:
+      "공고 수집을 Playwright로 자동화하고, 포트폴리오를 벡터 검색 대상으로 둔 RAG로 유사 사례를 붙였으며, 프롬프트를 코드와 분리해 운영에서 조정하도록 했습니다.",
+    decisions: [
+      {
+        heading: "포트폴리오를 RAG 검색 대상으로 뒀습니다",
+        body: "포트폴리오 문서를 Vector Store/file_search 검색 대상으로 두고, 신규 프로젝트 본문을 검색 쿼리이자 생성 컨텍스트로 사용했습니다. 공고 → 관련 포트폴리오 검색 → 제안서 초안 생성으로 이어지는 업무 흐름을 파이프라인으로 고정했습니다.",
+      },
+      {
+        heading: "포트폴리오 카테고리를 고정해 검색 품질을 높였습니다",
+        body: "카테고리를 AI·중개플랫폼·커머스·홈페이지·앱·ERP/CRM·LMS 등으로 고정해, 검색 품질과 프롬프트 일관성을 확보했습니다. 자유 태깅 대신 정해진 축으로 사례를 정리했습니다.",
+      },
+      {
+        heading: "프롬프트 관리를 별도 도메인으로 분리했습니다",
+        body: "제안서 생성 로직을 코드 수정 없이 조정할 수 있도록 프롬프트 관리 API를 별도 도메인으로 뒀습니다. 생성 품질을 운영 단계에서 튜닝할 수 있는 구조를 고려했습니다.",
+      },
+    ],
+    result:
+      "외주 공고 수집부터 RAG 기반 AI 제안서 생성까지 이어지는 Next.js 자동화 파이프라인을 구현하고, Supabase pgvector·OpenAI·Playwright·Notion·Slack 연동으로 실제 영업 업무에 적용 가능한 프로토타입을 구축했습니다.",
+    results: [
+      "공고 수집 → 유사 사례 검색 → 제안서 초안 생성 파이프라인 동작",
+      "Supabase pgvector `match_proposals` RPC로 유사도 검색 구성",
+      "Project·Portfolio·Prompt 엔티티와 프로젝트 상태 파이프라인 설계",
+      "Vercel Cron·Slack 알림·세션 복원까지 운영 관점 자동화",
+    ],
+    highlights: [
+      "위시켓·프리모아 Playwright 스크래퍼 + 브라우저 세션 복원",
+      "Supabase PostgreSQL·Storage·pgvector RPC로 임베딩·유사도 검색",
+      "Notion 문서 임베딩 기반 포트폴리오 RAG 컨텍스트 검색",
+      "GPT 제안서 생성·재생성·편집·상태 관리 API(Next.js Route Handler)",
+      "포트폴리오 카테고리 고정·프롬프트 관리 도메인 분리로 검색·생성 일관성 확보",
+    ],
+    relatedPosts: [
+      { title: "제안서 RAG 시스템 설계", href: DEVLOG_URL },
+      { title: "OpenAI Vector Store 효율성과 RAG 설계 판단 기준", href: DEVLOG_URL },
     ],
   },
 ];

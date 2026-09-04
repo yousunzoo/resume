@@ -56,7 +56,6 @@ export interface Project {
   result: string; // 결과 요약
   results?: string[]; // 결과 상세
   highlights: string[]; // 핵심 작업/성과 리스트
-  interviewPoints?: string[]; // 면접에서 설명할 포인트
   relatedPosts?: RelatedPost[]; // 관련 devlog 글
   needsMoreInfo?: boolean; // 상세 보강 예정 여부
 }
