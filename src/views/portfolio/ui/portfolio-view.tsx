@@ -1,17 +1,17 @@
 import { PageShell } from "@/widgets/page-shell";
 import { ProjectFilter } from "@/features/filter-projects";
-import {
-  projects,
-  projectCategories,
-  portfolioIntro,
-} from "@/entities/project";
+import { projectCategories, portfolioIntro } from "@/entities/project";
+import { getProjects } from "@/entities/project/server";
 import { Eyebrow, Heading, Text } from "@/shared/ui";
 
 /**
  * 포트폴리오 목록 화면 조립 — PageShell(자체 SkipLink + `<main id="main">") 안에
  * 헤더(Eyebrow/Heading/Text 토큰)와 카테고리 필터 목록을 배치한다.
+ * 프로젝트 데이터는 Notion(원본)에서 조회한다.
  */
-export function PortfolioView() {
+export async function PortfolioView() {
+  const projects = await getProjects();
+
   return (
     <PageShell>
       <header className="mb-9">

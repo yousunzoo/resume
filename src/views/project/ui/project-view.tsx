@@ -1,9 +1,9 @@
 import { PageShell } from "@/widgets/page-shell";
 import { ProjectDetail } from "@/widgets/project-detail";
-import type { Project } from "@/entities/project";
+import type { ProjectDetail as ProjectDetailData } from "@/entities/project";
 
 interface ProjectViewProps {
-  project: Project;
+  project: ProjectDetailData;
 }
 
 /**

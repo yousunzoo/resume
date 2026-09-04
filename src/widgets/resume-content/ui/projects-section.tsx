@@ -1,9 +1,12 @@
 import Link from "next/link";
-import { featuredProjects, ProjectCard } from "@/entities/project";
+import { ProjectCard } from "@/entities/project";
+import { getFeaturedProjects } from "@/entities/project/server";
 import { ArrowRightIcon, Reveal, SectionHeading, Text } from "@/shared/ui";
 
 /* ─── Projects ────────────────────────────────────────────────────────────── */
-export function ProjectsSection() {
+export async function ProjectsSection() {
+  const featuredProjects = await getFeaturedProjects();
+
   return (
     <section aria-labelledby="proj-title">
       <Reveal>

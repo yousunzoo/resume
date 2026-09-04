@@ -9,13 +9,9 @@ export type {
   RichSpan,
 } from "./model/types";
 
+// 클라이언트 안전 public API. Notion 데이터 fetch(server-only)는 ./server 로 분리.
 export { portfolioIntro } from "./model/fallback-projects";
-export {
-  getProjects,
-  getFeaturedProjects,
-  getProjectDetail,
-  projectCategories,
-} from "./model/selectors";
+export { projectCategories } from "./model/categories";
 
 export {
   CATEGORY_META,
