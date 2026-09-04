@@ -16,7 +16,7 @@ export function mapPropsToProject(page: { properties: Props }): Project {
   return {
     slug: plain(p.Slug?.rich_text),
     title: plain(p.Project?.title),
-    category: (p.Category?.select?.name ?? "플랫폼") as ProjectCategory,
+    category: (p.Category?.select?.name ?? "클라이언트 SI") as ProjectCategory,
     featured: parseFeatured(p.Featured?.checkbox ?? null),
     order: p.Order?.number ?? null,
     period: plain(p.Period?.rich_text),
