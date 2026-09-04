@@ -21,20 +21,8 @@ const iconBase = {
   "aria-hidden": true,
 };
 
-/* 금융 서비스 — layered coins / chart */
-function FinanceIcon(props: IconProps) {
-  return (
-    <svg {...iconBase} {...props}>
-      <path d="M4 20h16" />
-      <rect x="5" y="12" width="3.4" height="6" rx="1" />
-      <rect x="10.3" y="8" width="3.4" height="10" rx="1" />
-      <rect x="15.6" y="4.5" width="3.4" height="13.5" rx="1" />
-    </svg>
-  );
-}
-
-/* 플랫폼 — connected nodes */
-function PlatformIcon(props: IconProps) {
+/* 클라이언트 SI — connected nodes (client delivery / platforms) */
+function ClientSIIcon(props: IconProps) {
   return (
     <svg {...iconBase} {...props}>
       <circle cx="6" cy="6" r="2.3" />
@@ -45,22 +33,22 @@ function PlatformIcon(props: IconProps) {
   );
 }
 
-/* 모바일 앱 — device */
-function MobileIcon(props: IconProps) {
-  return (
-    <svg {...iconBase} {...props}>
-      <rect x="7" y="3" width="10" height="18" rx="2.5" />
-      <path d="M10.5 18h3" />
-    </svg>
-  );
-}
-
-/* 백오피스·자동화 — gear / automation */
-function OpsIcon(props: IconProps) {
+/* 자체 도구·인프라 — gear / automation */
+function ToolingIcon(props: IconProps) {
   return (
     <svg {...iconBase} {...props}>
       <circle cx="12" cy="12" r="3.2" />
       <path d="M12 3v2.4M12 18.6V21M4.2 7.5l2 1.2M17.8 15.3l2 1.2M4.2 16.5l2-1.2M17.8 8.7l2-1.2" />
+    </svg>
+  );
+}
+
+/* 개인·학습 — open book / spark */
+function LearningIcon(props: IconProps) {
+  return (
+    <svg {...iconBase} {...props}>
+      <path d="M12 6c-1.8-1.3-4-1.8-6.5-1.6v11c2.5-.2 4.7.3 6.5 1.6 1.8-1.3 4-1.8 6.5-1.6v-11C16 4.2 13.8 4.7 12 6z" />
+      <path d="M12 6v11" />
     </svg>
   );
 }
@@ -72,10 +60,9 @@ export interface CategoryMeta {
 }
 
 export const CATEGORY_META: Record<ProjectCategory, CategoryMeta> = {
-  "금융 서비스": { label: "Finance", Icon: FinanceIcon },
-  플랫폼: { label: "Platform", Icon: PlatformIcon },
-  "모바일 앱": { label: "Mobile", Icon: MobileIcon },
-  "백오피스·자동화": { label: "Ops · Automation", Icon: OpsIcon },
+  "클라이언트 SI": { label: "Client SI", Icon: ClientSIIcon },
+  "자체 도구·인프라": { label: "Tooling · Infra", Icon: ToolingIcon },
+  "개인·학습": { label: "Personal · Learning", Icon: LearningIcon },
 };
 
 export function getCategoryMeta(category: ProjectCategory): CategoryMeta {

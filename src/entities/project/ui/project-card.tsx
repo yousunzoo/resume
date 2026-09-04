@@ -54,7 +54,7 @@ export function ProjectCard({
             weight="semibold"
             className="mt-2 block uppercase text-ink-faint"
           >
-            {project.cardCategory ?? meta.label}
+            {meta.label}
           </Text>
           {featured && (
             <Badge className="mt-3 hidden w-fit tracking-[0.18em] sm:inline-block">
@@ -87,7 +87,7 @@ export function ProjectCard({
           tnum
           className="mb-2 text-ink-faint"
         >
-          {project.angle ?? project.category} · {project.period}
+          {project.category} · {project.period}
         </Text>
 
         <Text

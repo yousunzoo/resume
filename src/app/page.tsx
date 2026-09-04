@@ -18,6 +18,9 @@ const profilePageJsonLd = buildProfilePageJsonLd({
   url: site.url,
 });
 
+// 대표 프로젝트를 Notion(원본)에서 조회 — ISR 재검증
+export const revalidate = 300;
+
 export default function Home() {
   return (
     <>

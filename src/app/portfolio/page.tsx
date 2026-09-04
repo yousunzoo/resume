@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   },
 };
 
+// 포트폴리오 목록을 Notion(원본)에서 조회 — ISR 재검증
+export const revalidate = 300;
+
 export default function PortfolioPage() {
   return <PortfolioView />;
 }

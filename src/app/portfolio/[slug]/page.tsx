@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { projects, getProjectBySlug } from "@/entities/project";
+import { getProjects, getProjectDetail } from "@/entities/project/server";
 import { ProjectView } from "@/views/project";
 import { JsonLd } from "@/shared/ui";
 import { buildCreativeWorkJsonLd } from "@/shared/lib/seo";
 import { site } from "@/shared/config/site";
 
-export function generateStaticParams() {
+// Notion(원본) 기반 — ISR 재검증. 신규 프로젝트는 첫 요청 시 온디맨드 생성.
+export const revalidate = 300;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const projects = await getProjects();
   return projects.map((p) => ({ slug: p.slug }));
 }
 
@@ -14,7 +19,7 @@ export async function generateMetadata({
   params,
 }: PageProps<"/portfolio/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const project = await getProjectDetail(slug);
   if (!project) return { title: "프로젝트를 찾을 수 없습니다" };
 
   const title = `${project.title} · 유선주`;
@@ -38,7 +43,7 @@ export default async function ProjectPage({
   params,
 }: PageProps<"/portfolio/[slug]">) {
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const project = await getProjectDetail(slug);
   if (!project) notFound();
 
   return (

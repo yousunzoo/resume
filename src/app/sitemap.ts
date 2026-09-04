@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
-import { projects } from "@/entities/project";
+import { getProjects } from "@/entities/project/server";
 import { site } from "@/shared/config/site";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
+  const projects = await getProjects();
 
   return [
     {

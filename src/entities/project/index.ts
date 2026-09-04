@@ -3,18 +3,15 @@
 
 export type {
   ProjectCategory,
-  ProjectDecision,
-  BeforeAfterRow,
-  RelatedPost,
   Project,
+  ProjectDetail,
+  NotionBlock,
+  RichSpan,
 } from "./model/types";
 
-export { projects, portfolioIntro } from "./model/projects";
-export {
-  getProjectBySlug,
-  featuredProjects,
-  projectCategories,
-} from "./model/selectors";
+// 클라이언트 안전 public API. Notion 데이터 fetch(server-only)는 ./server 로 분리.
+export { portfolioIntro } from "./model/fallback-projects";
+export { projectCategories } from "./model/categories";
 
 export {
   CATEGORY_META,
