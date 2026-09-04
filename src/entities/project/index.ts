@@ -3,10 +3,10 @@
 
 export type {
   ProjectCategory,
-  ProjectDecision,
-  BeforeAfterRow,
-  RelatedPost,
   Project,
+  ProjectDetail,
+  NotionBlock,
+  RichSpan,
 } from "./model/types";
 
 export { projects, portfolioIntro } from "./model/projects";
