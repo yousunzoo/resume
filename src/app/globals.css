@@ -218,19 +218,91 @@ button:focus-visible {
 
 /* ─── Print ──────────────────────────────────────────────────────────────────── */
 @media print {
+  /* A4 세로, 인쇄 안전 여백. 여백은 @page 가 소유하므로 컨테이너 패딩은 제거한다. */
+  @page {
+    size: A4 portrait;
+    margin: 14mm;
+  }
+
+  /* 의도된 회색조(hairline 보더, 타임라인 선·노드, chip/callout 배경)를 종이에
+     그대로 렌더한다. 미지정 시 브라우저가 배경색을 생략해 타임라인이 사라진다.
+     동시에 그림자는 인쇄 품질을 흐리므로 제거한다. */
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
   :root {
     --canvas: #ffffff;
+  }
+  html {
+    background: #fff;
   }
   body {
     background: #fff;
     font-size: 10.5pt;
+    line-height: 1.55;
   }
+
+  /* 화면 전용 요소 숨김 (내비/뒤로가기/CTA) */
   .no-print {
     display: none !important;
   }
-  .print-block {
+
+  /* min-h-screen(100vh)은 인쇄 시 페이지 높이만큼 늘어나 빈 페이지를 만든다. */
+  .min-h-screen {
+    min-height: 0 !important;
+  }
+
+  /* sticky/overflow 컨테이너를 정적 흐름으로 되돌린다.
+     - PageShell 헤더: sticky top-0 (lg 프리픽스 없음 → 인쇄에도 적용됨)
+     - 이력서 사이드바: 내부 래퍼의 h-screen/overflow-y-auto */
+  .sticky {
+    position: static !important;
+  }
+  aside > div {
+    position: static !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* @page 여백이 있으므로 <main> 자체 패딩은 제거해 폭을 온전히 쓴다. */
+  main {
+    padding: 0 !important;
+  }
+
+  /* 작은 원자 단위만 페이지 경계에서 통째로 유지한다.
+     주의: 경력 항목(article)처럼 '키가 큰' 블록에는 절대 걸지 않는다 —
+     남은 공간에 못 들어가면 통째로 다음 페이지로 밀려 거대한 빈 공간을 만든다.
+     큰 블록은 자연스럽게 페이지를 넘기고, 헤더/개별 항목 단위만 함께 묶는다. */
+  .print-block,
+  figure,
+  img,
+  pre,
+  tr {
     break-inside: avoid;
   }
+
+  /* 제목이 페이지 맨 아래에 홀로 남지 않게 한다 */
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+
+  /* 문단·리스트의 고아/과부 줄 방지 */
+  p,
+  li {
+    orphans: 3;
+    widows: 3;
+  }
+
   /* PDF/인쇄에서는 카드 Description 등 말줄임(line-clamp)을 해제해
      모든 문장이 잘리지 않고 완전한 형태로 노출되도록 한다. */
   [class*="line-clamp"] {
@@ -238,6 +310,7 @@ button:focus-visible {
     display: block !important;
     overflow: visible !important;
   }
+
   a {
     color: var(--ink) !important;
     text-decoration: none !important;

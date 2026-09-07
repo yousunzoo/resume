@@ -12,7 +12,7 @@ export function ProjectDetail({ project: p }: { project: ProjectDetailData }) {
   const meta = getCategoryMeta(p.category);
 
   return (
-    <article className="space-y-12">
+    <article className="space-y-12 print:space-y-8">
       {/* ── Hero ───────────────────────────────────────────────── */}
       <header className="print-block">
         <Reveal>

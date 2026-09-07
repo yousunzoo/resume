@@ -19,7 +19,7 @@ function ImpactList({
   return (
     <ul className="space-y-3.5">
       {items.map((item, i) => (
-        <li key={i} className="flex gap-3">
+        <li key={i} className="flex gap-3 print:break-inside-avoid">
           <Text
             as="span"
             variant="caption"
@@ -75,8 +75,8 @@ export function ExperienceSection() {
             />
 
             <Reveal>
-              <article className="print-block">
-                <header className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <article>
+                <header className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 print:break-inside-avoid print:break-after-avoid">
                   <div>
                     <Text
                       as="h3"

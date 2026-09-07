@@ -40,7 +40,7 @@ export function HomeView() {
                 </Link>
               </div>
 
-              <div className="space-y-16 lg:space-y-20">
+              <div className="space-y-16 lg:space-y-20 print:space-y-8">
                 <ResumeContent />
               </div>
             </div>

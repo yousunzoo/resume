@@ -34,7 +34,7 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   if (variant === "main") {
     return (
-      <div className="mb-7">
+      <div className="mb-7 print:break-inside-avoid print:break-after-avoid">
         {eyebrow && <Eyebrow className="mb-2">{eyebrow}</Eyebrow>}
         <Heading as="h2" variant="title-2" id={id} className="scroll-mt-24 text-ink">
           {title}

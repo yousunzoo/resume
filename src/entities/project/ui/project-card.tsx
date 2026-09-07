@@ -28,7 +28,7 @@ export function ProjectCard({
     <Link
       href={`/portfolio/${project.slug}`}
       aria-label={`${project.title} 상세 보기`}
-      className={`group relative flex h-full flex-col rounded-xl border border-line bg-paper p-6 shadow-[var(--shadow-sm)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-ink hover:shadow-[var(--shadow-md)] focus-visible:-translate-y-1 ${
+      className={`group relative flex h-full flex-col rounded-xl border border-line bg-paper p-6 shadow-[var(--shadow-sm)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-ink hover:shadow-[var(--shadow-md)] focus-visible:-translate-y-1 print:break-inside-avoid ${
         featured ? "sm:flex-row sm:gap-8 sm:p-7" : ""
       }`}
     >

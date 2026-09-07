@@ -8,7 +8,7 @@ export async function ProjectsSection() {
   const featuredProjects = await getFeaturedProjects();
 
   return (
-    <section aria-labelledby="proj-title">
+    <section aria-labelledby="proj-title" className="print:hidden">
       <Reveal>
         <div className="mb-7 flex items-end justify-between gap-4">
           <SectionHeading

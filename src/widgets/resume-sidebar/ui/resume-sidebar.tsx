@@ -61,7 +61,7 @@ export function ResumeSidebar() {
       className="border-b border-line bg-paper lg:border-b-0 lg:border-r"
     >
       <div className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:overflow-y-auto">
-        <div className="flex h-full flex-col gap-10 px-7 py-9 lg:px-8 lg:pt-12 lg:pb-40">
+        <div className="flex h-full flex-col gap-10 px-7 py-9 lg:px-8 lg:pt-12 lg:pb-40 print:gap-6 print:px-0 print:py-0">
           {/* Identity */}
           <div className="print-block">
             {profile.image && (
@@ -100,7 +100,7 @@ export function ResumeSidebar() {
           </div>
 
           {/* Focus */}
-          <section aria-labelledby="side-focus" className="print-block">
+          <section aria-labelledby="side-focus" className="print-block print:hidden">
             <SectionHeading variant="sidebar" id="side-focus" title="Focus" />
             <ul className="mt-3.5 flex flex-wrap gap-x-2 gap-y-1.5">
               {focusAreas.map((area, i) => (
@@ -122,8 +122,11 @@ export function ResumeSidebar() {
             </ul>
           </section>
 
-          {/* Contact */}
-          <section aria-labelledby="side-contact">
+          {/* Contact + Skills — 인쇄 시 두 섹션을 좌우 2열 그리드로 묶어
+              세로 높이를 줄인다. 화면에서는 contents 로 녹아 기존 flex 흐름 유지. */}
+          <div className="contents print:grid print:grid-cols-2 print:items-start print:gap-x-8">
+            {/* Contact */}
+            <section aria-labelledby="side-contact">
             <SectionHeading
               variant="sidebar"
               id="side-contact"
@@ -141,7 +144,7 @@ export function ResumeSidebar() {
                           "aria-label": `${row.label} (새 탭에서 열기)`,
                         }
                       : { "aria-label": `${row.label}: ${row.value}` })}
-                    className="group -mx-2 flex min-h-11 items-center gap-3 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-paper-3"
+                    className="group -mx-2 flex min-h-11 items-center gap-3 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-paper-3 print:mx-0 print:min-h-0 print:px-0 print:py-1.5"
                   >
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-line text-ink-faint transition-colors duration-200 group-hover:border-ink group-hover:text-ink">
                       {row.icon}
@@ -199,7 +202,8 @@ export function ResumeSidebar() {
                 </div>
               ))}
             </div>
-          </section>
+            </section>
+          </div>
 
           {/* Footer link */}
           <div className="no-print mt-auto border-t border-line pt-5">
