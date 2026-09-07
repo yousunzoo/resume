@@ -15,7 +15,6 @@ export {
   profile,
   summary,
   aboutMe,
-  focusAreas,
   metrics,
   experiences,
   techStack,

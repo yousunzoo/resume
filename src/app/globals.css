@@ -271,9 +271,11 @@ button:focus-visible {
     overflow: visible !important;
   }
 
-  /* @page 여백이 있으므로 <main> 자체 패딩은 제거해 폭을 온전히 쓴다. */
+  /* @page 여백이 가로 여백을 담당하므로 <main> 좌우 패딩만 제거해 폭을 온전히 쓴다.
+     세로 패딩(py-*)은 남겨 사이드바 구분선과 본문 사이 간격을 유지한다. */
   main {
-    padding: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   /* 작은 원자 단위만 페이지 경계에서 통째로 유지한다.
