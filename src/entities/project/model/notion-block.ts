@@ -10,6 +10,6 @@ export type NotionBlock =
   | { type: "heading3"; rich: RichSpan[] }
   | { type: "paragraph"; rich: RichSpan[] }
   | { type: "bulleted_list"; items: RichSpan[][] }
-  | { type: "callout"; icon: string | null; rich: RichSpan[] }
+  | { type: "callout"; icon: string | null; rich: RichSpan[]; body: RichSpan[][] }
   | { type: "table"; hasHeader: boolean; rows: RichSpan[][][] }
   | { type: "code"; language: string; text: string };

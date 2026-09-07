@@ -41,9 +41,21 @@ export function mapBlocks(raw: Raw[]): NotionBlock[] {
         if (rich.some((r) => r.text.trim())) out.push({ type: "paragraph", rich });
         break;
       }
-      case "callout":
-        out.push({ type: "callout", icon: b.callout.icon?.emoji ?? null, rich: mapRich(b.callout.rich_text) });
+      case "callout": {
+        // Notion callout 은 제목만 rich_text 에 두고 본문을 자식 블록으로 중첩하는
+        // 경우가 많다(예: "핵심 요약"). 자식 paragraph 를 본문으로 끌어올린다.
+        const body: RichSpan[][] = (b.children ?? [])
+          .filter((c: Raw) => c.type === "paragraph")
+          .map((c: Raw) => mapRich(c.paragraph.rich_text))
+          .filter((r: RichSpan[]) => r.some((s) => s.text.trim()));
+        out.push({
+          type: "callout",
+          icon: b.callout.icon?.emoji ?? null,
+          rich: mapRich(b.callout.rich_text),
+          body,
+        });
         break;
+      }
       case "code":
         out.push({ type: "code", language: b.code.language ?? "", text: mapRich(b.code.rich_text).map((r) => r.text).join("") });
         break;

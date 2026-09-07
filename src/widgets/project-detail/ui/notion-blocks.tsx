@@ -69,13 +69,28 @@ function renderBlock(block: NotionBlock) {
     case "callout":
       return (
         <div className="rounded-xl border border-line bg-paper-2 p-5">
-          <Text
-            as="p"
-            variant="body-sm"
-            className="whitespace-pre-line leading-relaxed text-ink-body"
-          >
-            <RichText spans={block.rich} />
-          </Text>
+          {block.rich.length > 0 && (
+            <Text
+              as="p"
+              variant="eyebrow"
+              weight="bold"
+              className="uppercase tracking-[0.16em] text-ink-faint"
+            >
+              <RichText spans={block.rich} />
+            </Text>
+          )}
+          {block.body.map((para, i) => (
+            <Text
+              as="p"
+              key={i}
+              variant="body-sm"
+              className={`whitespace-pre-line leading-relaxed text-ink-body ${
+                block.rich.length > 0 || i > 0 ? "mt-2" : ""
+              }`}
+            >
+              <RichText spans={para} />
+            </Text>
+          ))}
         </div>
       );
     case "table":

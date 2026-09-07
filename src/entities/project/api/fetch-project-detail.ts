@@ -4,7 +4,11 @@ import { notion, resolveDataSourceId, notionEnabled } from "./notion-client";
 import { mapPropsToProject } from "./map";
 import { mapBlocks } from "./map-blocks";
 
-// 표(table)는 자식 table_row 를 합성해야 하므로 has_children 인 경우만 재귀 조회한다.
+// 자식 합성이 필요한 블록만 재귀 조회한다.
+// - table: 자식 table_row 를 합성
+// - callout: 제목만 본체에 두고 본문을 자식 블록으로 중첩("핵심 요약")
+const NESTED_TYPES = new Set(["table", "callout"]);
+
 async function listChildren(blockId: string): Promise<unknown[]> {
   const client = notion();
   const acc: unknown[] = [];
@@ -17,7 +21,7 @@ async function listChildren(blockId: string): Promise<unknown[]> {
     for (const b of res.results as Array<
       Record<string, unknown> & { id: string; has_children?: boolean; type?: string }
     >) {
-      if (b.has_children && b.type === "table") {
+      if (b.has_children && b.type && NESTED_TYPES.has(b.type)) {
         (b as Record<string, unknown>).children = await listChildren(b.id);
       }
       acc.push(b);
