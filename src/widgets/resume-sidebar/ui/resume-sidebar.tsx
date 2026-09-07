@@ -71,7 +71,7 @@ export function ResumeSidebar() {
                   alt={`${profile.name} 프로필 사진`}
                   fill
                   sizes="(min-width: 1024px) 112px, 96px"
-                  className="object-cover grayscale"
+                  className="object-cover"
                   priority
                 />
               </div>
