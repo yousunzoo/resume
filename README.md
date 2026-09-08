@@ -25,17 +25,3 @@ src/
 ```
 
 콘텐츠를 바꾸려면 `src/data/resume.ts`만 수정하면 됩니다.
-
-## 개발
-
-```bash
-npm run dev      # 개발 서버 (http://localhost:3000)
-npm run build    # 프로덕션 빌드
-npm run start    # 프로덕션 서버
-```
-
-## 디자인
-
-"Precision Engineer" 컨셉 — amber/gold 액센트, near-black 배경, 모노스페이스 메타데이터.
-복잡한 시스템을 명확한 경계로 구조화하는 개발자의 강점을 시각 언어로 표현했습니다.
-`prefers-reduced-motion`을 존중하며 모든 모션은 접근성 가드를 갖췄습니다.
