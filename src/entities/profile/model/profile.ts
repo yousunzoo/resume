@@ -27,7 +27,7 @@ export const profile: Profile = {
 export const summary: string[] = [
   "React·TypeScript로 금융 플랫폼과 모바일 서비스를 만들고 있습니다. 화면을 그리는 일보다 신청 조건, 상태 전환, 데이터 흐름처럼 복잡도가 높은 로직을 또렷한 책임 단위로 나누는 데 집중합니다.",
   "사용자 이탈과 오류를 지표로 확인한 뒤 구조 개선으로 이어, 대출 신청 플로우 이탈률 약 80%, 운영 오류 접수율 약 90%를 줄였습니다. 금융사별 신청 정책은 Strategy Pattern으로 분리하고, multi-step flow·상태 책임 분리·공통 컴포넌트화로 정책 변경이 미치는 영향 범위를 좁혔습니다.",
-  "반복되는 인터랙션·데이터·상태 로직은 재사용 패턴으로 추상화해 팀 전체의 변경 비용을 낮춥니다. ThrottleButton·useThrottleFn으로 계층별 중복요청을 차단하고, 제네릭 createStore와 Proxy 셀렉터로 Zustand 공통 인터페이스를 설계하며, BaseFetcher 인터셉터 파이프라인으로 API 계층을 일관되게 관리합니다.",
+  "반복되는 인터랙션·데이터·상태 로직은 재사용 패턴으로 추상화해 팀 전체의 변경 비용을 낮춥니다. 공통 UI는 size·color·상태(loading·disabled) variant를 갖춘 컴포넌트와 Figma 기반 시맨틱 토큰으로 설계하고 Storybook으로 문서화해 디자인-개발이 같은 기준을 공유하게 하고, ThrottleButton·useThrottleFn으로 중복요청을 차단하며, 제네릭 createStore·Proxy 셀렉터와 BaseFetcher 인터셉터 파이프라인으로 상태·API 계층을 일관되게 관리합니다.",
 ];
 
 // 자기소개 (About) — 이력서 상단 소개 문단
@@ -67,9 +67,14 @@ export const experiences: Experience[] = [
           "사용자 신청부터 상담사 매칭, 관리자 운영까지 역할별 업무 Flow가 연결되는 웹·모바일 서비스 개발",
       },
       {
+        title: "디자인 시스템·공통 컴포넌트 설계",
+        description:
+          "라디오·체크박스 등 공통 컴포넌트를 외부 UI 라이브러리 없이 직접 구현하고, 네이티브 input 기반으로 키보드·접근성을 지키며 상태·variant 로직을 헤드리스 훅으로 분리. Figma 토큰·Storybook으로 디자인-개발 기준 통일",
+      },
+      {
         title: "프론트엔드 공통 개발 기반 구축",
         description:
-          "상태 관리·API·공통 UI·디렉터리 구조를 표준화하고 Start-kit과 공통 패키지를 구축해 신규 프로젝트의 초기 개발 기반 통일",
+          "상태 관리·API·디렉터리 구조를 표준화하고 Start-kit과 모노레포 공유 패키지를 구축해 신규 프로젝트의 초기 개발 기반 통일",
       },
       {
         title: "레거시 서비스 현대화 및 품질 개선",
@@ -106,7 +111,7 @@ export const experiences: Experience[] = [
       {
         title: "공통 UI 변경 범위 5개 → 1개 파일로 축소",
         description:
-          "서비스별로 중복 구현된 레이아웃·리스트 구조를 공통 인터페이스와 컴포넌트로 통합해 반복 수정과 변경 비용 감소",
+          "서비스별로 중복 구현된 레이아웃·리스트·버튼을 variant 기반 공통 컴포넌트와 라우트별 서비스 테마(getServiceColor)로 통합해, 금융 상품마다 UI를 다시 만들지 않고 토큰·variant만으로 대응",
       },
       {
         title: "서비스 중단 없이 프론트엔드 레거시 현대화",
@@ -128,12 +133,16 @@ export const techStack: TechStackGroup[] = [
     items: ["TypeScript", "React", "Next.js", "React Native"],
   },
   {
-    category: "State & Data",
-    items: ["Zustand", "TanStack Query"],
+    category: "UI & Design System",
+    items: ["Storybook", "Tailwind CSS", "Framer Motion"],
   },
   {
-    category: "Build & Observability",
-    items: ["pnpm", "Vite", "Loki"],
+    category: "State & Data",
+    items: ["Zustand", "Jotai", "TanStack Query"],
+  },
+  {
+    category: "Build & Monorepo",
+    items: ["pnpm Workspace", "Vite"],
   },
   {
     category: "Testing",
