@@ -114,6 +114,11 @@ export const experiences: Experience[] = [
           "서비스별로 중복 구현된 레이아웃·리스트·버튼을 variant 기반 공통 컴포넌트와 라우트별 서비스 테마(getServiceColor)로 통합해, 금융 상품마다 UI를 다시 만들지 않고 토큰·variant만으로 대응",
       },
       {
+        title: "BFF로 백엔드 API 은닉 · 공격 표면 축소",
+        description:
+          "Next.js를 API 서버 앞단 BFF로 두어 백엔드 주소·스펙을 클라이언트에 노출하지 않아 엔드포인트 직접 타격·열거를 차단하고, 인증 토큰은 httpOnly Cookie로 서버에만 유지해 XSS 토큰 탈취를 방지",
+      },
+      {
         title: "서비스 중단 없이 프론트엔드 레거시 현대화",
         description:
           "React 17 → 18, Next.js 10 → 13 마이그레이션과 기존 코드베이스 60% 이상의 TypeScript 전환을 점진적으로 수행",
